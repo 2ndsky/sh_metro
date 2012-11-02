@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>SmartHome.py</title>
+        <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+        <link rel="stylesheet" href="css/my.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+        <script src="js/smarthome.js"></script>
+        <script src="js/my.smarthome.js"></script>
+    </head>
+<body>
+<div data-role="page" id="eg">
+    <div data-role="header"><h3>Erdgeschoss</h3></div>
+    <div data-role="content">
+
+<div>Kurzzeit/Stopp: <img data-sh="eg.jalousie.kurz" src="/img/t.png" class="push" /></div>
+<div>Langzeit/Fahrt: <img data-sh="eg.jalousie.lang" src="/img/t.png" class="switch" /></div>
+<div data-role="fieldcontain">
+    <label for="eg_jalousie_west_kurz">Kurzzeit/Stopp</label>
+    <select id="eg_jalousie_west_kurz" data-sh="eg.jalousie.west.kurz" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_jalousie_west_lang">Langzeit/Fahrt</label>
+    <select id="eg_jalousie_west_lang" data-sh="eg.jalousie.west.lang" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_wohnen_licht">Deckenspots</label>
+    <select id="eg_wohnen_licht" data-sh="eg.wohnen.licht" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_wohnen_licht_wert">Helligkeit</label>
+    <input id="eg_wohnen_licht_wert" data-sh="eg.wohnen.licht.wert" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_wohnen_kugellampe">Kugellampe</label>
+    <select id="eg_wohnen_kugellampe" data-sh="eg.wohnen.kugellampe" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_wohnen_jalousie_position">Höhe</label>
+    <input id="eg_wohnen_jalousie_position" data-sh="eg.wohnen.jalousie.position" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_wohnen_jalousie_lamelle">Lamelle</label>
+    <input id="eg_wohnen_jalousie_lamelle" data-sh="eg.wohnen.jalousie.lamelle" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_essen_licht">Deckenlampe</label>
+    <select id="eg_essen_licht" data-sh="eg.essen.licht" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_essen_licht_wert">Helligkeit</label>
+    <input id="eg_essen_licht_wert" data-sh="eg.essen.licht.wert" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_kueche_licht">Deckenspots</label>
+    <select id="eg_kueche_licht" data-sh="eg.kueche.licht" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_kueche_licht_wert">Helligkeit</label>
+    <input id="eg_kueche_licht_wert" data-sh="eg.kueche.licht.wert" type="range" min="0" max="100" step="5" />
+</div>
+<div>Ist-Temperatur: <span data-sh="eg.kueche.temperatur.ist"></span></div>
+<div data-role="fieldcontain">
+    <label for="eg_kueche_jalousie_position">Höhe</label>
+    <input id="eg_kueche_jalousie_position" data-sh="eg.kueche.jalousie.position" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_kueche_jalousie_lamelle">Lamelle</label>
+    <input id="eg_kueche_jalousie_lamelle" data-sh="eg.kueche.jalousie.lamelle" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_flur_licht">Deckenspots</label>
+    <select id="eg_flur_licht" data-sh="eg.flur.licht" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_flur_licht_wert">Helligkeit</label>
+    <input id="eg_flur_licht_wert" data-sh="eg.flur.licht.wert" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="eg_flur_tuer_tagbetrieb">Tagbetrieb</label>
+    <select id="eg_flur_tuer_tagbetrieb" data-sh="eg.flur.tuer.tagbetrieb" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+
+    </div> <!-- /content -->
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#page1">HTML</a></li>
+                <li><a href="#page2">Logic Trigger</a></li>
+                <li><a href="#page3">Form</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>

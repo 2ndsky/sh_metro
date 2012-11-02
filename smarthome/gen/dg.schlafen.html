@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>SmartHome.py</title>
+        <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+        <link rel="stylesheet" href="css/my.css" />
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
+        <script src="js/smarthome.js"></script>
+        <script src="js/my.smarthome.js"></script>
+    </head>
+<body>
+<div data-role="page" id="dg.schlafen">
+    <div data-role="header"><h3>Schlafen</h3></div>
+    <div data-role="content">
+
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_licht">Deckenlampe</label>
+    <select id="dg_schlafen_licht" data-sh="dg.schlafen.licht" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_licht_wert">Helligkeit</label>
+    <input id="dg_schlafen_licht_wert" data-sh="dg.schlafen.licht.wert" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_rollladen_kurz">Kurzzeit/Stopp</label>
+    <select id="dg_schlafen_rollladen_kurz" data-sh="dg.schlafen.rollladen.kurz" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_rollladen_lang">Langzeit/Fahrt</label>
+    <select id="dg_schlafen_rollladen_lang" data-sh="dg.schlafen.rollladen.lang" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_rollladen_position">Höhe</label>
+    <input id="dg_schlafen_rollladen_position" data-sh="dg.schlafen.rollladen.position" type="range" min="0" max="100" step="5" />
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_schlafen_nadine">Nadine schläft</label>
+    <select id="dg_schlafen_schlafen_nadine" data-sh="dg.schlafen.schlafen.nadine" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+<div data-role="fieldcontain">
+    <label for="dg_schlafen_schlafen_niko">Niko schläft</label>
+    <select id="dg_schlafen_schlafen_niko" data-sh="dg.schlafen.schlafen.niko" data-role="slider"><option value="off">Off</option><option value="on">On</option></select>
+</div>
+    </div>
+</div>
+
+    </div> <!-- /content -->
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="#page1">HTML</a></li>
+                <li><a href="#page2">Logic Trigger</a></li>
+                <li><a href="#page3">Form</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>

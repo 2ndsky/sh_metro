@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet">
+    <link href="css/modern-responsive.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/smarthome.min.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body class="modern-ui" onload="prettyPrint()">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>Casa Will<small>smarthome</small></h1>
+                <a href="/" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="clearfix">
+
+
+                    <div class="tile bg-color-yellow icon">
+                        <div class="tile-content">
+                            <img src="img/licht_licht.png" width="128" height="128">
+                        </div>
+                        <div class="brand">
+                            <span class="name">Beleuchtung</span>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-red icon">
+                        <div class="tile-content">
+                            <img src="img/Music128.png" alt="">
+                        </div>
+                        <div class="brand">
+                            <span class="name">Audio</span>
+                            <div class="button-set" data-role="button-set">
+                                <button class="tool-button active"><img src="img/bage-playing.png"></button>
+                                <button class="tool-button"><img src="img/bage-paused.png"></button>
+                                <button class="tool-button"><img src="img/bage-busy.png"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile double bg-color-blueDark">
+                        <div class="tile-content">
+                            <h2>Wetter</h2>
+                            <h5>Leicht bewölkt</h5>
+                            <p>
+                                Im Verlauf des Tages kann es zu kurzen Schauern und Gewittern kommen.
+                            </p>
+                        </div>
+                        <div class="brand">
+                            <div class="badge">22°C</div>
+                            <div class="icon icon-cloud-overcast" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
