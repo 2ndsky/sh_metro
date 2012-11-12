@@ -60,14 +60,35 @@ function shInit(url) {
     $(document).on("click", 'a[data-logic]', function() { // Button
         shTriggerLogic(this);
     });
+    $(document).on("click", 'div.tile[data-sh]', function() { // Switch Button
+        shSwitchButton(this);
+    });
     $(document).on("click", 'img[data-logic]', function() { // Logic-Trigger Button
         shTriggerLogic(this);
     });
-    $(document).on("click", 'img.switch[data-sh]', function() { // Switch Button
-        shSwitchButton(this);
+    $(document).on("click", 'img.switch[data-sh]', function() { // Switch Image Button
+        shSwitchImageButton(this);
     });
     $(document).on("click", 'img.set[data-sh]', function() { // Send Button
         shSendFix(this);
+    });
+    $(document).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
+        event.preventDefault();
+        var obj = this;
+        $(obj).data('timer', 
+            setTimeout(function() {
+                $(obj).data('long', true);
+                shSendFixLong(obj);
+            }, 1000)
+        );
+    });
+    $(document).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
+        clearTimeout($(this).data('timer'))
+        if ($(this).data('long')) {
+            $(this).data('long', false);
+        } else {
+            shSendFix(this);
+        }
     });
     $(document).on("vmousedown", 'img.push[data-sh]', function(event) { // Push Button
         event.preventDefault();
@@ -104,7 +125,7 @@ function shWsInit() {
     shWS.onopen = function(){
         shSend([ 'SmartHome.py', 1 ]);
         shSend([ 'monitor', shMonitor ]);
-        $('.ui-dialog').dialog('close');
+        //$('.ui-dialog').dialog('close');
     };
     shWS.onmessage = function(event) {
         var path, val;
@@ -151,7 +172,7 @@ function shWSCheck() {
 // page handling //
 function shPageCreate() {
     console.log('Page Create');
-    shMonitor = $("[data-sh]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh"); }}).get();
+    shMonitor = $("[data-sh]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh"); }}).add($("[data-sh-long]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh-long"); }})).get();
     shMonitor = shUnique(shMonitor);
     shSend(['monitor', shMonitor]);
     // create dialog page
@@ -196,9 +217,9 @@ function shSend(data){
     };
 };
 
-function shBufferUpdate(path, val, src){
+function shBufferUpdate(path, val, src, enforce){
     if ( path in shBuffer) {
-        if (shBuffer[path] !== val){
+        if (shBuffer[path] !== val || enforce){
             console.log(path + " changed to: " + val + " (" + typeof(val) + ")");
             shBuffer[path] = val;
             shSend([ 'item', [ path, val ]]);
@@ -212,6 +233,16 @@ function shTriggerLogic(obj){
 };
 
 function shSwitchButton(obj){
+    var path = $(obj).attr('data-sh');
+    var val = true;
+    if ( String($(obj).val()) == '1') {
+        val = false;
+    };
+    shBufferUpdate(path, val, obj);
+    $(obj).val(Number(val));
+};
+
+function shSwitchImageButton(obj){
     var path = $(obj).attr('data-sh');
     var val = true;
     if ( String($(obj).val()) == '1') {
@@ -238,7 +269,14 @@ function shSendFix(obj){
     var path = $(obj).attr('data-sh');
     if ( path == shLock) { return; };
     var val = Number($(obj).attr("value"));
-    shBufferUpdate(path, val, obj);
+    shBufferUpdate(path, val, obj, true);
+};
+
+function shSendFixLong(obj){
+    var path = $(obj).attr('data-sh-long');
+    if ( path == shLock) { return; };
+    var val = Number($(obj).attr("value"));
+    shBufferUpdate(path, val, obj, true);
 };
 
 function shSendPush(obj, val){
@@ -291,7 +329,9 @@ function shUpdateItem(path, val, src) {
         };
         switch(element) {
             case 'DIV':
-                $(this).html(val);
+                if ( $(this).hasClass("tile") == false ){
+                    $(this).html(val);
+                };
                 break;
             case 'SPAN':
                 $(this).html(val);
@@ -306,6 +346,10 @@ function shUpdateItem(path, val, src) {
                 updateInput(this, val);
                 break;
             case 'IMG':
+                if ( $(this).attr("data-sh-long") ){
+                    break;
+                }
+
                 if ( $(this).attr("class") != "set" ){
                     if ( path in shOpt ){
                         $(this).attr("src", shOpt[path][Number(val)]);
@@ -386,5 +430,5 @@ function shDialog(header, content){
     $('#shDialogHeader').html(header);
     $('#shDialogContent').html(content);
     //$('#shDialog').trigger('create');
-    $.mobile.changePage('#shDialog', {transition: 'pop', role: 'dialog'} );
+    //$.mobile.changePage('#shDialog', {transition: 'pop', role: 'dialog'} );
 };
