@@ -204,6 +204,7 @@ function shPageInit() {
         });
         $(this).on("change", 'div.slider[data-sh]', function(e, val){
             shSendPush(this, Math.floor(val / 100.0 * 255.0));
+            $(this).find('div.name').html(val + "%");
         });
     });
 
@@ -225,9 +226,6 @@ function shPageInit() {
             } else {
                 shSendFix(this);
             }
-        });
-        $(this).on("change", 'div.slider[data-sh]', function(e, val){
-            shSendPush(this, Math.floor(val / 100.0 * 255.0));
         });
     });
 };

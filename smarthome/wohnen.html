@@ -10,16 +10,8 @@
     <link href="css/modern.css" rel="stylesheet">
     <link href="css/modern-responsive.css" rel="stylesheet">
 
-    <style type="text/css">
-        .jalousie .slider .marker { height: 22px; }
-        .jalousie .slider .complete { background-color: white; }
-        .dimmer .slider .marker { height: 22px; }
-        .dimmer .slider .complete { background-color: white; }
-    </style>
-
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/jquery.mobile.min.js"></script>
-    <script src="js/slider.js"></script>
     <script src="js/smarthome.js"></script>
     <script src="js/my.smarthome.js"></script>
 
@@ -42,7 +34,7 @@
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
 
-                            <h2>EG</h2>
+                            <h2>Erdgeschoss</h2>
                             <h5>Jalousie alle</h5>
                             <div style="float:left;margin: 5px 0 0 5px;">
                                 <img data-sh="eg.jalousie.kurz" data-sh-long="eg.jalousie.lang" value="0" src="img/steuer_auf.png" width="48" height="48" />
@@ -51,58 +43,12 @@
                                 <img data-sh="eg.jalousie.kurz" data-sh-long="eg.jalousie.lang" value="1" src="img/steuer_ab.png" width="48" height="48" />
                             </div>
                         </div>
-                    </div>
-
-                    <div class="tile bg-color-green jalousie">
-                        <div class="tile-content">
-
-                            <h2>EG</h2>
-                            <h5>Jalousie alle</h5>
-                            <div data-sh="eg.jalousie.position" class="slider" data-role="slider" style="margin-top: 2px; height:22px">
-                            </div>
-                            <div data-sh="eg.jalousie.lamelle" class="slider" data-role="slider" style="height:22px">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tile bg-color-green jalousie">
-                        <div class="tile-content">
-
-                            <h2>Wohnen</h2>
-                            <h5>Jalousie</h5>
-                            <div style="float:left;margin: 5px 0 0 5px;">
-                                <img data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.jalousie.wohnen.lang" value="0" src="img/steuer_auf.png" width="48" height="48" />
-                            </div>
-                            <div style="float:left;margin:5px 0 5px 15px;">
-                                <img data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.jalousie.wohnen.lang" value="1" src="img/steuer_ab.png" width="48" height="48" />
-                            </div>
-                        </div>
                         <div class="brand">
                             <div style="margin: 0 0 0 10px;">
                                 <img src="img/fts_rollo.png" widht="24" height="24" />
                             </div>
                             <div class="name" style="padding: 0 0 3px 25px;">
-                                <span data-sh="eg.wohnen.jalousie.position" class="percent"></span> / <span data-sh="eg.wohnen.jalousie.lamelle" class="percent"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tile bg-color-green jalousie">
-                        <div class="tile-content">
-
-                            <h2>Wohnen</h2>
-                            <h5>Jalousie</h5>
-                            <div data-sh="eg.wohnen.jalousie.position" class="slider" data-role="slider" style="margin-top: 2px; height:22px">
-                            </div>
-                            <div data-sh="eg.wohnen.jalousie.lamelle" class="slider" data-role="slider" style="height:22px">
-                            </div>
-                        </div>
-                        <div class="brand">
-                            <div style="margin: 0 0 0 10px;">
-                                <img src="img/fts_rollo.png" widht="24" height="24" />
-                            </div>
-                            <div class="name" style="padding: 0 0 3px 25px;">
-                                <span data-sh="eg.wohnen.jalousie.position" class="percent"></span> / <span data-sh="eg.wohnen.jalousie.lamelle" class="percent"></span>
+                                100% / 62%
                             </div>
                         </div>
                     </div>
@@ -123,23 +69,7 @@
                                 <img src="img/licht_licht.png" widht="24" height="24" />
                             </div>
                             <div class="name" style="padding: 0 0 3px 25px;">
-                                <span data-sh="eg.wohnen.licht.wert" class="percent"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tile bg-color-yellow dimmer">
-                        <div class="tile-content">
-                            <h2>Wohnen</h2>
-                            <h5>Deckenspots</h5>
-                            <div data-sh="eg.wohnen.licht.wert" class="slider" data-role="slider" style="margin-top: 20px; height:22px"></div>
-                        </div>
-                        <div class="brand">
-                            <div style="margin: 0 0 0 10px;">
-                                <img src="img/licht_licht.png" widht="24" height="24" />
-                            </div>
-                            <div class="name" style="padding: 0 0 3px 25px;">
-                                <span data-sh="eg.wohnen.licht.wert" class="percent"></span>
+                                100%
                             </div>
                         </div>
                     </div>
@@ -155,25 +85,6 @@
                                 <img src="img/licht_licht.png" widht="24" height="24" />
                             </div>
                             <div class="badge unavailable bg-color-yellow"></div>
-                        </div>
-                    </div>
-
-                    <div class="tile icon" onclick="javascript:document.location.href='wohnen.html'">
-                        <div class="tile-content">
-                            <img src="img/szene_essen.png" alt=""/>
-                        </div>
-                        <div class="brand">
-                            <span class="name">Wohnbereich</span>
-                        </div>
-                    </div>
-
-                    <div class="tile double image">
-                        <div class="tile-content">
-                            <img src="http://www.ravensburg.de/WebCam/HGS/bachstrasse.jpg?0.7322765511926264" alt="" />
-                        </div>
-                        <div class="brand">
-                            <span class="name">Webcam Ravensburg</span>
-                            <div class="badge bg-color-orange">4</div>
                         </div>
                     </div>
 
