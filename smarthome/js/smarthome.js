@@ -72,24 +72,6 @@ function shInit(url) {
     $(document).on("click", 'img.set[data-sh]', function() { // Send Button
         shSendFix(this);
     });
-    $(document).on("vmousedown", 'img.blub[data-sh-long]', function(event) { // Short/Long Button
-        event.preventDefault();
-        var obj = this;
-        $(obj).data('timer', 
-            setTimeout(function() {
-                $(obj).data('long', true);
-                shSendFixLong(obj);
-            }, 1000)
-        );
-    });
-    $(document).on("vmouseup", 'img.blub[data-sh-long]', function() { // Short/Long Button
-        clearTimeout($(this).data('timer'))
-        if ($(this).data('long')) {
-            $(this).data('long', false);
-        } else {
-            shSendFix(this);
-        }
-    });
     $(document).on("vmousedown", 'img.push[data-sh]', function(event) { // Push Button
         event.preventDefault();
         shSendPush(this, true);
@@ -203,11 +185,8 @@ function shPageInit() {
                     $(obj).data('long', true);
                     var path = $(obj).attr('data-sh-long');
                     if ( path == shLock) { return; };
-                    if (Number($(obj).attr("value")) == 1) {
-                        shBufferUpdate(path, [1, 1], obj, true);
-                    } else {
-                        shBufferUpdate(path, [1, 9], obj, true);
-                    }
+                    var val = Number($(obj).attr("value"))
+                    shBufferUpdate(path, [val, 1], obj, true);
                 }, 400)
             );
         });
@@ -219,6 +198,26 @@ function shPageInit() {
                 if ( path == shLock) { return; };
                 var val = Number($(this).attr("value"));
                 shBufferUpdate(path, [0, 0], this, true);
+            } else {
+                shSendFix(this);
+            }
+        });
+    });
+    $(document).find(".jalousie").each(function() {
+        $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
+            event.preventDefault();
+            var obj = this;
+            $(obj).data('timer', 
+                setTimeout(function() {
+                    $(obj).data('long', true);
+                    shSendFixLong(obj);
+                }, 400)
+            );
+        });
+        $(this).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
+            clearTimeout($(this).data('timer'))
+            if ($(this).data('long')) {
+                $(this).data('long', false);
             } else {
                 shSendFix(this);
             }
