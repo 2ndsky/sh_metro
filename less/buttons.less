@@ -1,5 +1,5 @@
 /*
- * Metro UI CSS v 0.1.4
+ * Metro UI CSS
  * Copyright 2012 Sergey Pimenov
  * Licensed under the MIT Lilcense
  *
@@ -42,6 +42,8 @@
 
 button, .button {
     #font > .control;
+    min-width: 90px;
+    min-height: 32px;
     height: 32px;
     background-color: #ccc;
     border: 1px transparent solid;
@@ -54,6 +56,7 @@ button, .button {
     vertical-align: middle;
     cursor: pointer;
     padding: 4px 10px;
+    position: relative;
 
     &.standart {
         min-width: 90px;
@@ -61,8 +64,8 @@ button, .button {
     }
 
     &:active, &.default:active {
-        background-color: #000 !important;
-        color: #fff;
+        top: 1px;
+        left: 1px;
     }
 
     &:disabled, &.disabled {
@@ -80,45 +83,30 @@ button, .button {
         outline: 0;
         border: 1px #353535 dotted;
     }
+}
 
-    &:hover {
+a.button {
+    &:hover, &:active {
+        color: inherit;
     }
-
 }
 
 button, .button, .tool-button {
-    [class*=icon-] {
-        background-size: cover;
-        zoom: 1;
-    }
 
     &.mini {
         min-height: 24px;
+        min-width: 24px;
         height: 26px;
         font-size: .8em;
-
-        [class*=icon-] {
-
-        }
     }
     &.big {
         min-height: 48px;
         height: 48px;
         font-size: 1.2em;
-
-        [class*=icon-] {
-            margin-top: 6px;
-            zoom: 1;
-        }
     }
 }
 
 .tool-button {
-    [class*=icon-] {
-        margin-top: 2px !important;
-        margin-left: 7px !important;
-    }
-
     &.mini {
         min-width: 22px;
         width: 22px;
@@ -127,11 +115,6 @@ button, .button, .tool-button {
     &.big {
         min-width: 48px;
         width: 48px;
-
-        [class*=icon-] {
-            margin-top: 2px !important;
-            margin-left: 15px !important;
-        }
     }
 }
 
@@ -174,10 +157,6 @@ button, .button, .tool-button {
         position: absolute;
         top: 8px;
         left: 8px;
-    }
-
-    [class*=icon-] {
-        margin-left: 8px;
     }
 }
 
@@ -254,3 +233,69 @@ button, .button, .tool-button {
     }
 }
 
+.shortcuts {
+    margin-bottom: 10px;
+}
+
+.shortcut {
+    width: 92px;
+    height: 92px;
+    display: inline-block;
+    //padding: 18px 0;
+    margin: 0 10px 10px 0;
+    vertical-align: top;
+    text-decoration: none;
+    background: #F3F3F3;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    border-bottom: 2px transparent solid;
+    position: relative;
+
+    &:hover {
+        border-color: red;
+        //box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    &:active {
+        //box-shadow: none;
+        background: #F3F3F3;
+        top: 1px;
+        left: 1px;
+    }
+
+    &:last-child {
+
+    }
+
+    & > .icon {
+        margin-top: .25em;
+        margin-bottom: .25em;
+        font-size: 32px;
+        color: #888;
+    }
+    & > .label {
+        display: block;
+        font-weight: 400;
+        color: #666;
+    }
+
+    & > .badge {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: @blue;
+        padding: 5px;
+        margin: 0 !important;
+        text-align: center;
+        display: block;
+        font-size: 9pt;
+        color: #fff;
+    }
+}
+
+a.shortcut {
+    padding: 30px 0;
+    .label {
+        font-size: 9pt;
+    }
+}

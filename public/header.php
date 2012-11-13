@@ -27,7 +27,7 @@
 
         <div class="brand">
             <a href="/"><span class="metro-ui-logo place-left"></span></a>
-            <a href="/"><span class="name">Metro UI CSS <sup class="fg-color-yellow tertiary-info-secondary-text"> v 0.1.5</sup></span></a>
+            <a href="/"><span class="name">Metro UI CSS <sup class="fg-color-yellow tertiary-info-secondary-text"> v 0.1.6</sup></span></a>
         </div>
 
         <ul>
@@ -53,7 +53,7 @@
                     <li><a href="buttons.php">Buttons</a></li>
                     <li><a href="images.php">Images</a></li>
                     <li class="divider"></li>
-                    <li><a href="icons.php">Icons by Metro Studio</a></li>
+                    <li><a href="icons.php">Icons</a></li>
                 </ul>
             </li>
 
@@ -69,6 +69,8 @@
                     <li><a href="rating.php">Rating</a></li>
                     <li><a href="progress.php">Progress bars</a></li>
                     <li><a href="carousel.php">Carousel</a></li>
+                    <li><a href="listview.php">List view</a></li>
+                    <li><a href="slider.php">Slider</a></li>
                     <li class="divider"></li>
                     <li><a href="notices.php">Notices and Replies</a></li>
                     <li class="divider"></li>

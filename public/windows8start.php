@@ -9,6 +9,7 @@
 
     <link href="css/modern.css" rel="stylesheet">
     <link href="css/theme-dark.css" rel="stylesheet">
+    <link href="css/modern-responsive.css" rel="stylesheet">
 
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/google-analytics.js"></script>
@@ -85,7 +86,7 @@
     <div class="page-region">
         <div class="page-region-content tiles">
             <div class="tile-group">
-                <div class="tile image">
+                <div class="tile image outline-color-green">
                     <div class="tile-content">
                         <img src="images/myface.jpg" alt="">
                     </div>
@@ -164,7 +165,7 @@
                     </div>
                 </div>
 
-                <div class="tile double bg-color-green" data-role="slider" data-param-period="3000">
+                <div class="tile double bg-color-green" data-role="tile-slider" data-param-period="3000">
                     <div class="tile-content">
                         <h2>mattberg@live.com</h2>
                         <h5>Re: Wedding Annoucement!</h5>
@@ -184,7 +185,7 @@
                         <img class="icon" src="images/Mail128.png"/>
                     </div>
                 </div>
-                <div class="tile double image-slider" data-role="slider" data-param-period="5000" data-param-direction="left">
+                <div class="tile double image-slider" data-role="tile-slider" data-param-period="5000" data-param-direction="left">
                     <div class="tile-content">
                         <img src="images/1.jpg" alt="">
                     </div>

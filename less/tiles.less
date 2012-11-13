@@ -1,5 +1,5 @@
 /*
- * Metro UI CSS v 0.1.4
+ * Metro UI CSS
  * Copyright 2012 Sergey Pimenov
  * Licensed under the MIT Lilcense
  *
@@ -169,7 +169,7 @@
         height: @tileTriple;
     }
     &.quadro-vertical {
-        height: @tileQuadro; 
+        height: @tileQuadro;
     }
 
 
@@ -238,12 +238,21 @@
             &:hover {
                 color: @white;
             }
+
+            & > [class*=icon-] {
+                font-size: 24px;
+            }
+
         }
 
         & > .icon {
             margin: 5px 15px;
             width: 32px;
             height: 32px;
+
+            & > [class*=icon-] {
+                font-size: 32px;
+            }
 
             & > img {
                 width: 100%;
