@@ -82,7 +82,7 @@ function shInit(url) {
     $(document).on("change", 'select[data-sh]', function() { // Select
         shSendSelect(this);
     });
-    $(document).on("change", 'input[data-sh][data-type="range"]', function() { // Slider
+    $(document).on("slidestop", 'input[data-sh][data-type="range"]', function() { // Slider
         shSendNum(this);
     });
     $(document).on("change", 'input[data-sh][type="time"]', function() { // Time
@@ -375,7 +375,7 @@ function shUpdateItem(path, val, src) {
                     value = Math.floor(val / 255 * 100);
                     value = Math.min(value, 100);
                     value = Math.max(value, 0);
-                    $(this).html(value + "%");
+                    $(this).html(val + "%");
                 } else {
                     $(this).html(val);
                 }
