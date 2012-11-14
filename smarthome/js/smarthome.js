@@ -175,6 +175,11 @@ function shPageInit() {
         };
     };
 
+    var allsliders = $('input[data-sh][data-type="range"]');
+    allsliders.each(function (index, slider) {
+        $(slider).slider();
+    });
+
     // Init Items
     $(document).find(".dimmer").each(function() {
         $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
@@ -202,9 +207,6 @@ function shPageInit() {
                 shSendFix(this);
             }
         });
-        $(this).on("change", 'div.slider[data-sh]', function(e, val){
-            shSendPush(this, Math.floor(val / 100.0 * 255.0));
-        });
     });
 
     $(document).find(".jalousie").each(function() {
@@ -225,9 +227,6 @@ function shPageInit() {
             } else {
                 shSendFix(this);
             }
-        });
-        $(this).on("change", 'div.slider[data-sh]', function(e, val){
-            shSendPush(this, Math.floor(val / 100.0 * 255.0));
         });
     });
 };
@@ -367,12 +366,6 @@ function shUpdateItem(path, val, src) {
         };
         switch(element) {
             case 'DIV':
-                if ( $(this).hasClass("slider") ) {
-                    value = val / 255.0 * 100.0;
-                    plugin = $(this).data('slider');
-                    plugin.set(value);
-                    break;
-                };
                 if ( $(this).hasClass("tile") == false ){
                     $(this).html(val);
                 };

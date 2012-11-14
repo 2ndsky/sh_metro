@@ -7,20 +7,26 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
 
     <style type="text/css">
-        .jalousie .slider .marker { height: 22px; }
-        .jalousie .slider .complete { background-color: white; }
-        .dimmer .slider .marker { height: 22px; }
-        .dimmer .slider .complete { background-color: white; }
         .tile:hover { outline: 0; }
+        input.ui-slider-input { display:none !important; }
+
+        div.ui-slider { margin: 2px 0; height: 22px; width: 100%; }
+        .ui-btn-corner-all { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; }
+        .ui-btn-down-c { background: 0; background-image: 0; background-color: lightgray; border: 0; }
+        .ui-btn-up-c { background: 0; background-image: 0; background-color: black; border: 0; }
+        .ui-btn-active { background: 0; background-image: 0; background-color: white; }
+        .ui-controlgroup a.ui-slider-handle, a.ui-btn.ui-slider-handle { width: 16px; height: 22px; margin: -11px 0 0 -8px; }
+        .ui-shadow { moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+        .ui-btn-inner { border: 0; }
     </style>
 
     <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.mobile.min.js"></script>
-    <script src="js/slider.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
     <script src="js/smarthome.js"></script>
     <script src="js/my.smarthome.js"></script>
 
@@ -59,10 +65,8 @@
 
                             <h2>EG</h2>
                             <h5>Jalousie alle</h5>
-                            <div data-sh="eg.jalousie.position" class="slider" data-role="slider" style="margin-top: 2px; height:22px">
-                            </div>
-                            <div data-sh="eg.jalousie.lamelle" class="slider" data-role="slider" style="height:22px">
-                            </div>
+                            <input data-sh="eg.jalousie.position" type="range" min="0" max="255" step="5" data-highlight="true" />
+                            <input data-sh="eg.jalousie.lamelle" type="range" min="0" max="255" step="5" data-highlight="true" />
                         </div>
                     </div>
 
@@ -93,10 +97,8 @@
 
                             <h2>Wohnen</h2>
                             <h5>Jalousie</h5>
-                            <div data-sh="eg.wohnen.jalousie.position" class="slider" data-role="slider" style="margin-top: 2px; height:22px">
-                            </div>
-                            <div data-sh="eg.wohnen.jalousie.lamelle" class="slider" data-role="slider" style="height:22px">
-                            </div>
+                            <input data-sh="eg.wohnen.jalousie.position" type="range" min="0" max="255" step="5" data-highlight="true" />
+                            <input data-sh="eg.wohnen.jalousie.lamelle" type="range" min="0" max="255" step="5" data-highlight="true" />
                         </div>
                         <div class="brand">
                             <div style="margin: 0 0 0 10px;">
@@ -132,8 +134,8 @@
                     <div class="tile bg-color-yellow dimmer">
                         <div class="tile-content">
                             <h2>Wohnen</h2>
-                            <h5>Deckenspots</h5>
-                            <div data-sh="eg.wohnen.licht.wert" class="slider" data-role="slider" style="margin-top: 20px; height:22px"></div>
+                            <h5 style="margin-bottom: 15px;">Deckenspots</h5>
+                            <input data-sh="eg.wohnen.licht.wert" type="range" min="0" max="255" step="5" data-highlight="true" />
                         </div>
                         <div class="brand">
                             <div style="margin: 0 0 0 10px;">
