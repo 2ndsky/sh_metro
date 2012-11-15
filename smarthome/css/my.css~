@@ -1,0 +1,59 @@
+img.controls_left { float: left; margin-top: 5px; width: 48px; height: 48px; }
+img.controls_right { float: right; margin-top: 5px; width: 48px; height: 48px; }
+.tile-content img.item_icon { margin: 5px 0 0 37px; width: 48px; height: 48px; }
+.brand img.item_icon { widht: 24px; height:24px; margin: 0 0 0 10px; }
+.brand .item_value { padding: 0 0 3px 25px; }
+
+/* tweak the metro css for our needs */
+.tile:hover { outline: 0; }
+
+/* change the style of the jquery mobile slider */
+div.ui-slider { margin: 2px 0; height: 22px; width: 100%; }
+.ui-controlgroup a.ui-slider-handle, a.ui-btn.ui-slider-handle { width: 16px; height: 22px; margin: -11px 0 0 -8px; }
+
+input.ui-slider-input { display:none !important; }
+.ui-btn-corner-all { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; }
+.ui-btn-down-c { background: 0; background-image: 0; background-color: lightgray; border: 0; }
+.ui-btn-up-c { background: 0; background-image: 0; background-color: black; border: 0; }
+.ui-btn-active { background: 0; background-image: 0; background-color: white; }
+.ui-shadow { moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
+.ui-btn-inner { border: 0; }
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  
+}
+@media (min-width: 980px) {
+
+}
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    img.controls_left { margin-left: 5px; margin-top: 3px; width: 36px; height: 36px; }
+    img.controls_right { margin-right: 5px; margin-top: 3px; width: 36px; height: 36px; }
+    .tile-content img.item_icon { margin: 3px 0 0 33px; width: 36px; height: 36px; }
+    .brand img.item_icon { widht: 19px; height:19px; margin: 4px 0 0 10px; }
+    .brand .item_value { padding: 0 0 2px 22px; }
+
+    div.ui-slider { margin: 1px 0; height: 18px; width: 100%; }
+    .ui-controlgroup a.ui-slider-handle, a.ui-btn.ui-slider-handle { width: 12px; height: 18px; margin: -9px 0 0 -6px; }
+
+    .tile .tile-content h1,
+    .tile .tile-content h2,
+    .tile .tile-content h3,
+    .tile .tile-content h4,
+    .tile .tile-content h5,
+    .tile .tile-content h6,
+    .tile .tile-content p {
+      padding: 0;
+      margin: 0;
+      line-height: 20px;
+    }
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
