@@ -1,14 +1,16 @@
-img.controls_left { float: left; margin-top: 5px; width: 48px; height: 48px; }
-img.controls_right { float: right; margin-top: 5px; width: 48px; height: 48px; }
+img.controls_left { float: left; width: 48px; height: 48px; }
+img.controls_right { float: right; width: 48px; height: 48px; }
 .tile-content img.item_icon { margin: 5px 0 0 37px; width: 48px; height: 48px; }
 .brand img.item_icon { widht: 24px; height:24px; margin: 0 0 0 10px; }
 .brand .item_value { padding: 0 0 3px 25px; }
+
+.tile .tile-content h5 { font-weight: normal; }
 
 /* tweak the metro css for our needs */
 .tile:hover { outline: 0; }
 
 /* change the style of the jquery mobile slider */
-div.ui-slider { margin: 2px 0; height: 22px; width: 100%; }
+div.ui-slider { margin: 2px 0; height: 22px; width: 100%; margin: auto 0; }
 .ui-controlgroup a.ui-slider-handle, a.ui-btn.ui-slider-handle { width: 16px; height: 22px; margin: -11px 0 0 -8px; }
 
 input.ui-slider-input { display:none !important; }
@@ -34,7 +36,7 @@ input.ui-slider-input { display:none !important; }
 @media (max-width: 767px) {
     img.controls_left { margin-left: 5px; margin-top: 3px; width: 36px; height: 36px; }
     img.controls_right { margin-right: 5px; margin-top: 3px; width: 36px; height: 36px; }
-    .tile-content img.item_icon { margin: 3px 0 0 33px; width: 36px; height: 36px; }
+    .tile-content img.item_icon { margin: 5px 0 0 33px; width: 36px; height: 36px; }
     .brand img.item_icon { widht: 19px; height:19px; margin: 4px 0 0 10px; }
     .brand .item_value { padding: 0 0 2px 22px; }
 

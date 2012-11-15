@@ -1,8 +1,10 @@
-img.controls_left { float: left; margin-top: 5px; width: 48px; height: 48px; }
-img.controls_right { float: right; margin-top: 5px; width: 48px; height: 48px; }
+img.controls_left { float: left; width: 48px; height: 48px; }
+img.controls_right { float: right; width: 48px; height: 48px; }
 .tile-content img.item_icon { margin: 5px 0 0 37px; width: 48px; height: 48px; }
 .brand img.item_icon { widht: 24px; height:24px; margin: 0 0 0 10px; }
 .brand .item_value { padding: 0 0 3px 25px; }
+
+.tile .tile-content h5 { font-weight: normal; }
 
 /* tweak the metro css for our needs */
 .tile:hover { outline: 0; }

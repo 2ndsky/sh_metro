@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/my.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body data-role="page" class="modern-ui">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>DG<small>Rollläden</small></h1>
+                <a data-rel="back" href="dg.html" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+             
+                <div class="clearfix">
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Schlafen</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.schlafen.rollladen.kurz" data-sh-long="dg.schlafen.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.schlafen.rollladen.kurz" data-sh-long="dg.schlafen.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Schlafen</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.schlafen.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Ankleide</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.ankleide.rollladen.kurz" data-sh-long="dg.ankleide.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.ankleide.rollladen.kurz" data-sh-long="dg.ankleide.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Ankleide</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.ankleide.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Masterbad</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.masterbad.rollladen.kurz" data-sh-long="dg.masterbad.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.masterbad.rollladen.kurz" data-sh-long="dg.masterbad.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Masterbad</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.masterbad.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Arbeiten</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.arbeiten.rollladen.kurz" data-sh-long="dg.arbeiten.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.arbeiten.rollladen.kurz" data-sh-long="dg.arbeiten.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.arbeiten.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Arbeiten</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.arbeiten.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.arbeiten.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Zimmer 1</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.zimmer1.rollladen.kurz" data-sh-long="dg.zimmer1.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.zimmer1.rollladen.kurz" data-sh-long="dg.zimmer1.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer1.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Zimmer 1</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.zimmer1.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer1.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Zimmer 2</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="controls_left" data-sh="dg.zimmer2.rollladen.kurz" data-sh-long="dg.zimmer2.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                            <img class="controls_right" data-sh="dg.zimmer2.rollladen.kurz" data-sh-long="dg.zimmer2.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer2.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <h2>Zimmer 2</h2>
+                            <h5>&nbsp;</h5>
+                            <input data-sh="dg.zimmer2.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer2.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
