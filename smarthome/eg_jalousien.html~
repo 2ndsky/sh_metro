@@ -35,8 +35,8 @@
                     
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>K&uuml;che</h2>
-                            <h5>&nbsp;</h5>
+                            <h2>Jalousie</h2>
+                            <h5>K&uuml;che</h5>
                             <img class="controls_left" data-sh="eg.kueche.jalousie.kurz" data-sh-long="eg.kueche.jalousie.lang" value="0" src="img/steuer_auf.png" />
                             <img class="controls_right" data-sh="eg.kueche.jalousie.kurz" data-sh-long="eg.kueche.jalousie.lang" value="1" src="img/steuer_ab.png" />
                         </div>
@@ -51,8 +51,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>K&uuml;che</h2>
-                            <h5>&nbsp;</h5>
+                            <h2>Jalousie</h2>
+                            <h5>K&uuml;che</h5>
                             <input data-sh="eg.kueche.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
                             <input data-sh="eg.kueche.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
                         </div>
@@ -67,8 +67,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>rechts</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen rechts</h5>
                             <img class="controls_left" data-sh="eg.essen.rechts.jalousie.kurz" data-sh-long="eg.essen.rechts.jalousie.lang" value="0" src="img/steuer_auf.png" />
                             <img class="controls_right" data-sh="eg.essen.rechts.jalousie.kurz" data-sh-long="eg.essen.rechts.jalousie.lang" value="1" src="img/steuer_ab.png" />
                         </div>
@@ -83,8 +83,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>rechts</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen rechts</h5>
                             <input data-sh="eg.essen.rechts.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
                             <input data-sh="eg.essen.rechts.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
                         </div>
@@ -99,8 +99,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>mitte</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen mitte</h5>
                             <img class="controls_left" data-sh="eg.essen.mitte.jalousie.kurz" data-sh-long="eg.essen.rechts.jalousie.lang" value="0" src="img/steuer_auf.png" />
                             <img class="controls_right" data-sh="eg.essen.mitte.jalousie.kurz" data-sh-long="eg.essen.rechts.jalousie.lang" value="1" src="img/steuer_ab.png" />
                         </div>
@@ -115,8 +115,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>mitte</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen mitte</h5>
                             <input data-sh="eg.essen.mitte.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
                             <input data-sh="eg.essen.mitte.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
                         </div>
@@ -131,8 +131,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>links</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen links</h5>
                             <img class="controls_left" data-sh="eg.essen.links.jalousie.kurz" data-sh-long="eg.essen.links.jalousie.lang" value="0" src="img/steuer_auf.png" />
                             <img class="controls_right" data-sh="eg.essen.links.jalousie.kurz" data-sh-long="eg.essen.links.jalousie.lang" value="1" src="img/steuer_ab.png" />
                         </div>
@@ -147,8 +147,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Essen</h2>
-                            <h5>links</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Essen links</h5>
                             <input data-sh="eg.essen.links.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
                             <input data-sh="eg.essen.links.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
                         </div>
@@ -163,8 +163,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Wohnen</h2>
-                            <h5>&nbsp;</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Wohnen</h5>
                             <img class="controls_left" data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.wohnen.jalousie.lang" value="0" src="img/steuer_auf.png" />
                             <img class="controls_right" data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.wohnen.jalousie.lang" value="1" src="img/steuer_ab.png" />
                         </div>
@@ -179,8 +179,8 @@
 
                     <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Wohnen</h2>
-                            <h5>&nbsp;</h5>
+                            <h2>Jalousie</h2>
+                            <h5>Wohnen</h5>
                             <input data-sh="eg.wohnen.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
                             <input data-sh="eg.wohnen.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
                         </div>
