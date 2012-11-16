@@ -82,7 +82,10 @@ function shInit(url) {
     $(document).on("change", 'select[data-sh]', function() { // Select
         shSendSelect(this);
     });
-    $(document).on("change", 'input[data-sh][data-type="range"]', function() { // Slider
+    $(document).on("slidestop", 'input[data-sh][data-type="range"]', function() { // Slider
+        shSendNum(this);
+    });
+    $(document).on("change", 'input[data-sh][type="hidden"]', function() { // Hidden Field
         shSendNum(this);
     });
     $(document).on("change", 'input[data-sh][type="time"]', function() { // Time
@@ -207,9 +210,6 @@ function shPageInit() {
                 shSendFix(this);
             }
         });
-        $(this).on("change", 'div.slider[data-sh]', function(e, val){
-            shSendPush(this, Math.floor(val / 100.0 * 255.0));
-        });
     });
 
     $(document).find(".jalousie").each(function() {
@@ -231,9 +231,6 @@ function shPageInit() {
                 shSendFix(this);
             }
         });
-        $(this).on("change", 'div.slider[data-sh]', function(e, val){
-            shSendPush(this, Math.floor(val / 100.0 * 255.0));
-        });
     });
 };
 
@@ -242,6 +239,17 @@ function shPageShow() {
     if ( shWS.readyState > 1 ){ // Socket closed
         shWsInit();
     };
+
+    if (typeof miniColors != 'undefined') {
+	    $('.color-picker').miniColors({
+		    change: function(hex, rgba) {
+                id = $(this).attr('id');
+                $('#' + id + '_rot').val(rgba.r);
+                $('#' + id + '_gruen').val(rgba.g);
+                $('#' + id + '_blau').val(rgba.b);
+		    }
+	    });
+    }
 };
 
 // outgoing data //
@@ -372,12 +380,6 @@ function shUpdateItem(path, val, src) {
         };
         switch(element) {
             case 'DIV':
-                if ( $(this).hasClass("slider") ) {
-                    value = val / 255.0 * 100.0;
-                    plugin = $(this).data('slider');
-                    plugin.set(value);
-                    break;
-                };
                 if ( $(this).hasClass("tile") == false ){
                     $(this).html(val);
                 };
@@ -387,7 +389,7 @@ function shUpdateItem(path, val, src) {
                     value = Math.floor(val / 255 * 100);
                     value = Math.min(value, 100);
                     value = Math.max(value, 0);
-                    $(this).html(value + "%");
+                    $(this).html(val + "%");
                 } else {
                     $(this).html(val);
                 }

@@ -85,6 +85,9 @@ function shInit(url) {
     $(document).on("slidestop", 'input[data-sh][data-type="range"]', function() { // Slider
         shSendNum(this);
     });
+    $(document).on("change", 'input[data-sh][type="hidden"]', function() { // Hidden Field
+        shSendNum(this);
+    });
     $(document).on("change", 'input[data-sh][type="time"]', function() { // Time
         shSendVal(this);
     });
@@ -236,6 +239,17 @@ function shPageShow() {
     if ( shWS.readyState > 1 ){ // Socket closed
         shWsInit();
     };
+
+    if(jQuery().miniColors) {
+	    $('.color-picker').miniColors({
+		    change: function(hex, rgba) {
+                id = $(this).attr('id');
+                $('#' + id + '_rot').val(rgba.r);
+                $('#' + id + '_gruen').val(rgba.g);
+                $('#' + id + '_blau').val(rgba.b);
+		    }
+	    });
+    }
 };
 
 // outgoing data //

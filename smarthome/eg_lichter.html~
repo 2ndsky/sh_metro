@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/jquery.miniColors.css" rel="stylesheet" />
+    <link href="css/my.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/jquery.miniColors.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body data-role="page" class="modern-ui">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>EG<small>Licht</small></h1>
+                <a data-rel="back" href="eg.html" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>K&uuml;che</h2>
+                            <h5>Deckenspots</h5>
+                            <img class="controls_left" data-sh="eg.kueche.licht" data-sh-long="eg.kueche.licht.dim" value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.kueche.licht" data-sh-long="eg.kueche.licht.dim" value="0" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>K&uuml;che</h2>
+                            <h5>Deckenspots</h5>
+                            <input data-sh="eg.kueche.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>K&uuml;che</h2>
+                            <h5>Arbeitsplatte</h5>
+                            <input data-sh="eg.kueche.leds.weiss" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.leds.weiss" class="percent"></span>
+                            </div>
+                            <div class="badge">
+                                <input type="hidden" id="eg_kueche_leds" name="eg_kueche_leds" class="color-picker" size="7" value="#0C0" />
+                                <input type="hidden" id="eg_kueche_leds_rot" name="eg_kueche_leds_rot" data-sh="eg.kueche.leds.rot" value="#0" />
+                                <input type="hidden" id="eg_kueche_leds_gruen" name="eg_kueche_leds_gruen" data-sh="eg.kueche.leds.gruen" value="#C" />
+                                <input type="hidden" id="eg_kueche_leds_blau" name="eg_kueche_leds_blau" data-sh="eg.kueche.leds.blau" value="#0" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Essen</h2>
+                            <h5>Pendellampe</h5>
+                            <img class="controls_left" data-sh="eg.essen.licht" data-sh-long="eg.essen.licht.dim" value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.essen.licht" data-sh-long="eg.essen.licht.dim" value="0" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.essen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Essen</h2>
+                            <h5>Pendellampe</h5>
+                            <input data-sh="eg.essen.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.essen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Wohnen</h2>
+                            <h5>Deckenspots</h5>
+                            <img class="controls_left" data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="0" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.wohnen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Wohnen</h2>
+                            <h5>Deckenspots</h5>
+                            <input data-sh="eg.wohnen.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.wohnen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-sh="eg.wohnen.kugellampe" class="tile bg-color-yellow switch">
+                        <div class="tile-content">
+                            <h2>Wohnen</h2>
+                            <h5>Kugellampe</h5>
+                            <img class="item_icon" src="img/steuer_standby.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="badge unavailable bg-color-yellow"></div>
+                        </div>
+                    </div>
+
+                    <div data-sh="eg.wohnen.stehlampe" class="tile bg-color-yellow switch">
+                        <div class="tile-content">
+                            <h2>Wohnen</h2>
+                            <h5>Stehlampe</h5>
+                            <img class="item_icon" src="img/steuer_standby.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="badge unavailable bg-color-yellow"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Flur</h2>
+                            <h5>Deckenspots</h5>
+                            <img class="controls_left" data-sh="eg.flur.licht" data-sh-long="eg.flur.licht.dim" value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.flur.licht" data-sh-long="eg.flur.licht.dim" value="0" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.flur.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Flur</h2>
+                            <h5>Deckenspots</h5>
+                            <input data-sh="eg.flur.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.flur.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Flur</h2>
+                            <h5>Treppenspots</h5>
+                            <img class="controls_left" data-sh="eg.treppe.licht" data-sh-long="eg.treppe.licht.dim" value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.treppe.licht" data-sh-long="eg.treppe.licht.dim" value="0" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.treppe.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <h2>Flur</h2>
+                            <h5>Treppenspots</h5>
+                            <input data-sh="eg.treppe.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.treppe.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-sh="eg.wc.licht" class="tile bg-color-yellow switch">
+                        <div class="tile-content">
+                            <h2>WC</h2>
+                            <h5>Deckenlampe</h5>
+                            <img class="item_icon" src="img/steuer_standby.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="badge unavailable bg-color-yellow"></div>
+                        </div>
+                    </div>
+
+                    <div data-sh="eg.technik.licht" class="tile bg-color-yellow switch">
+                        <div class="tile-content">
+                            <h2>Technik</h2>
+                            <h5>Deckenlampe</h5>
+                            <img class="item_icon" src="img/steuer_standby.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="badge unavailable bg-color-yellow"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

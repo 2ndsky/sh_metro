@@ -20,7 +20,7 @@
     <title>Casa Will</title>
 </head>
 <body data-role="page" class="modern-ui">
-    <div class="page secondary">
+    <div class="page">
 
         <div class="page-header">
             <div class="page-header-content">
@@ -56,15 +56,6 @@
                         </div>
                         <div class="brand">
                             <span class="name">Zentralbedienung</span>
-                        </div>
-                    </div>
-
-                    <div class="tile bg-color-green icon" onclick="javascript:document.location.href='jalousien.html'">
-                        <div class="tile-content">
-                            <img src="img/fts_rollo.png" alt=""/>
-                        </div>
-                        <div class="brand">
-                            <span class="name">Jalousien</span>
                         </div>
                     </div>
 

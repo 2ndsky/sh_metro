@@ -24,7 +24,7 @@
 
         <div class="page-header">
             <div class="page-header-content">
-                <h1>Dachgeschoss</h1>
+                <h1>DG<small>Dachgeschoss</small></h1>
                 <a data-rel="back" href="index.html" class="back-button big page-back"></a>
             </div>
         </div>
