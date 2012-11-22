@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/jquery.miniColors.css" rel="stylesheet" />
+    <link href="css/my.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/jquery.miniColors.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body data-role="page" class="modern-ui">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>DG<small>Schlafbereich</small></h1>
+                <a href="index.html" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+
+                <h3>Schlafen</h3>
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <input data-sh="dg.schlafen.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.schlafen.licht" data-sh-long="dg.schlafen.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.schlafen.licht" data-sh-long="dg.schlafen.licht.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <input data-sh="dg.schlafen.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.schlafen.rollladen.kurz" data-sh-long="dg.schlafen.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="dg.schlafen.rollladen.kurz" data-sh-long="dg.schlafen.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2><span data-sh="dg.schlafen.heizung.ist" class="temperature">22,2°C</span></h2>
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.schlafen.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.schlafen.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.schlafen.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Masterbad</h3>
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <input data-sh="dg.masterbad.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.masterbad.licht" data-sh-long="dg.masterbad.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.masterbad.licht" data-sh-long="dg.masterbad.licht.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <input data-sh="dg.masterbad.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.masterbad.rollladen.kurz" data-sh-long="dg.masterbad.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="dg.masterbad.rollladen.kurz" data-sh-long="dg.masterbad.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2><span data-sh="dg.masterbad.heizung.ist" class="temperature">22,2°C</span></h2>
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.masterbad.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.masterbad.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.masterbad.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ankleide</h3>
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <input data-sh="dg.ankleide.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.ankleide.licht" data-sh-long="dg.ankleide.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.ankleide.licht" data-sh-long="dg.ankleide.licht.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <input data-sh="dg.ankleide.rollladen.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.ankleide.rollladen.kurz" data-sh-long="dg.ankleide.rollladen.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="dg.ankleide.rollladen.kurz" data-sh-long="dg.ankleide.rollladen.lang" value="1" src="img/steuer_ab.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.rollladen.position" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2><span data-sh="dg.ankleide.heizung.ist" class="temperature">22,2°C</span></h2>
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="dg.ankleide.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="dg.ankleide.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.ankleide.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

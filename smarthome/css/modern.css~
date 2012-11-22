@@ -4528,8 +4528,8 @@ table.bordered tbody tr:last-child td {
 .tile .tile-content h6,
 .tile .tile-content p {
   padding: 0;
-  margin: 0.2em 0;
-  line-height: 1.2em;
+  margin: 0;
+  line-height: 24px;
 }
 .tile .tile-content h1:hover,
 .tile .tile-content h2:hover,
@@ -4564,12 +4564,12 @@ table.bordered tbody tr:last-child td {
 }
 .tile.icon  > .tile-content  > img {
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 96px;
+  height: 96px;
   top: 50%;
   left: 50%;
-  margin-left: -32px;
-  margin-top: -32px;
+  margin-left: -48px;
+  margin-top: -48px;
 }
 .tile.image  > .tile-content,
 .tile.image-slider  > .tile-content {

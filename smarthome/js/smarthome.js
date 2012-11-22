@@ -386,10 +386,9 @@ function shUpdateItem(path, val, src) {
                 break;
             case 'SPAN':
                 if ( $(this).hasClass("percent") ) {
-                    value = Math.floor(val / 255 * 100);
-                    value = Math.min(value, 100);
-                    value = Math.max(value, 0);
                     $(this).html(val + "%");
+                } else if ( $(this).hasClass("temperature") ) {
+                    $(this).html(val.toFixed(1) + "°C");
                 } else {
                     $(this).html(val);
                 }

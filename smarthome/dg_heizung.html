@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/jquery.miniColors.css" rel="stylesheet" />
+    <link href="css/my.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/jquery.miniColors.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body data-role="page" class="modern-ui">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>DG<small>Heizung</small></h1>
+                <a data-rel="back" href="dg.html" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Schlafen</h5>
+                            <img class="controls_left" data-sh="dg.schlafen.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.schlafen.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.schlafen.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.schlafen.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.schlafen.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Schlafen</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Ankleide</h5>
+                            <img class="controls_left" data-sh="dg.ankleide.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.ankleide.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.ankleide.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.ankleide.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.ankleide.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Ankleide</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Masterbad</h5>
+                            <img class="controls_left" data-sh="dg.masterbad.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.masterbad.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.masterbad.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.masterbad.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.masterbad.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Masterbad</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Arbeiten</h5>
+                            <img class="controls_left" data-sh="dg.arbeiten.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.arbeiten.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.arbeiten.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.arbeiten.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.arbeiten.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Arbeiten</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Zimmer 1</h5>
+                            <img class="controls_left" data-sh="dg.zimmer1.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.zimmer1.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer1.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.zimmer1.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.zimmer1.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Zimmer 1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Zimmer 2</h5>
+                            <img class="controls_left" data-sh="dg.zimmer2.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.zimmer2.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.zimmer2.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.zimmer2.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.zimmer2.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Zimmer 2</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Bad</h5>
+                            <img class="controls_left" data-sh="dg.bad.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.bad.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.bad.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.bad.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.bad.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Bad</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>HWR</h5>
+                            <img class="controls_left" data-sh="dg.hwr.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="dg.hwr.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="dg.hwr.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="dg.hwr.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.hwr.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">HWR</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="dg.flur.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Flur</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

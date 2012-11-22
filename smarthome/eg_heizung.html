@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="author" content="Niko Will">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/jquery.miniColors.css" rel="stylesheet" />
+    <link href="css/my.css" rel="stylesheet"></link>
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/jquery.miniColors.js"></script>
+    <script src="js/smarthome.js"></script>
+    <script src="js/my.smarthome.js"></script>
+
+    <title>Casa Will</title>
+</head>
+<body data-role="page" class="modern-ui">
+    <div class="page secondary">
+
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1>EG<small>Heizung</small></h1>
+                <a data-rel="back" href="eg.html" class="back-button big page-back"></a>
+            </div>
+        </div>
+
+        <div class="page-region">
+            <div class="page-region-content">
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Wohnbereich</h5>
+                            <img class="controls_left" data-sh="eg.kueche.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.kueche.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="eg.kueche.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="eg.kueche.heizung.ist" class="temperature">22,2°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">K&uuml;che</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="eg.essen.heizung.ist" class="temperature">22,5°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Essen</div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2>Heizung</h2>
+                            <h5>Flur</h5>
+                            <img class="controls_left" data-sh="eg.flur.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                            <img class="controls_right" data-sh="eg.flur.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.flur.heizung.ist" class="temperature">22,0°C</span> / 
+                                <span data-sh="eg.flur.heizung.stellwert" class="percent">50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="eg.flur.heizung.ist" class="temperature">21,8°C</span></div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">Flur</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

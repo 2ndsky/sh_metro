@@ -7,11 +7,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
+    <link href="css/modern.css" rel="stylesheet"></link>
+    <link href="css/modern-responsive.css" rel="stylesheet"></link>
+    <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/jquery.miniColors.css" rel="stylesheet" />
+    <link href="css/my.css" rel="stylesheet"></link>
 
     <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.mobile.min.js"></script>
+    <script src="js/jquery.mobile-1.2.0.js"></script>
+    <script src="js/jquery.miniColors.js"></script>
     <script src="js/smarthome.js"></script>
     <script src="js/my.smarthome.js"></script>
 
@@ -22,96 +26,192 @@
 
         <div class="page-header">
             <div class="page-header-content">
-                <h1>Casa Will<small>smarthome</small></h1>
-                <a href="/" class="back-button big page-back"></a>
+                <h1>EG<small>Wohnbereich</small></h1>
+                <a href="index.html" class="back-button big page-back"></a>
             </div>
         </div>
 
         <div class="page-region">
             <div class="page-region-content">
+
+                <h3>K&uuml;che</h3>
                 <div class="clearfix">
-
-                    <div class="tile bg-color-green jalousie">
+                    
+                    <div class="tile bg-color-yellow dimmer">
                         <div class="tile-content">
-
-                            <h2>Erdgeschoss</h2>
-                            <h5>Jalousie alle</h5>
-                            <div style="float:left;margin: 5px 0 0 5px;">
-                                <img data-sh="eg.jalousie.kurz" data-sh-long="eg.jalousie.lang" value="0" src="img/steuer_auf.png" width="48" height="48" />
-                            </div>
-                            <div style="float:left;margin:5px 0 5px 15px;">
-                                <img data-sh="eg.jalousie.kurz" data-sh-long="eg.jalousie.lang" value="1" src="img/steuer_ab.png" width="48" height="48" />
+                            <input data-sh="eg.kueche.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.kueche.licht" data-sh-long="eg.kueche.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="eg.kueche.licht" data-sh-long="eg.kueche.licht.dim" value="0" src="img/steuer_minus.png" />
                             </div>
                         </div>
                         <div class="brand">
-                            <div style="margin: 0 0 0 10px;">
-                                <img src="img/fts_rollo.png" widht="24" height="24" />
-                            </div>
-                            <div class="name" style="padding: 0 0 3px 25px;">
-                                100% / 62%
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.licht.wert" class="percent"></span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tile bg-color-yellow dimmer">
+                    <div class="tile bg-color-green jalousie">
                         <div class="tile-content">
-                            <h2>Wohnen</h2>
-                            <h5>Deckenspots</h5>
-                            <div style="float:left;margin: 5px 0 0 5px;">
-                                <img data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="1" src="img/steuer_auf.png" width="48" height="48" />
-                            </div>
-                            <div style="float:left;margin:5px 0 5px 15px;">
-                                <img data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="0"  src="img/steuer_ab.png" width="48" height="48" />
+                            <input data-sh="eg.kueche.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <input data-sh="eg.kueche.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.kueche.jalousie.kurz" data-sh-long="eg.kueche.jalousie.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="eg.kueche.jalousie.kurz" data-sh-long="eg.kueche.jalousie.lang" value="1" src="img/steuer_ab.png" />
                             </div>
                         </div>
                         <div class="brand">
-                            <div style="margin: 0 0 0 10px;">
-                                <img src="img/licht_licht.png" widht="24" height="24" />
+                            <div class="name">
+                                <span data-sh="eg.essen.jalousie.links.position" class="percent">100%</span> / 
+                                <span data-sh="eg.essen.jalousie.links.lamelle" class="percent">62%</span>
                             </div>
-                            <div class="name" style="padding: 0 0 3px 25px;">
-                                100%
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <h2><span data-sh="eg.kueche.heizung.ist" class="temperature">22,2°C</span></h2>
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.kueche.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="eg.kueche.heizung.soll.down" value="1" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/sani_heizung.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.heizung.soll" class="temperature">22,0°C</span> / 
+                                <span data-sh="eg.kueche.heizung.stellwert" class="percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-yellow dimmer icon">
+                        <div class="tile-content">
+                            <div>
+                                <input data-sh="eg.kueche.leds.weiss" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            </div>
+                            <img class="item_icon" src="img/licht_led.png" />
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.kueche.leds.weiss" class="percent"></span>
+                            </div>
+                            <div class="badge">
+                                <input type="hidden" id="eg_kueche_leds" name="eg_kueche_leds" class="color-picker" size="7" value="#0C0" />
+                                <input type="hidden" id="eg_kueche_leds_rot" name="eg_kueche_leds_rot" data-sh="eg.kueche.leds.rot" value="#0" />
+                                <input type="hidden" id="eg_kueche_leds_gruen" name="eg_kueche_leds_gruen" data-sh="eg.kueche.leds.gruen" value="#C" />
+                                <input type="hidden" id="eg_kueche_leds_blau" name="eg_kueche_leds_blau" data-sh="eg.kueche.leds.blau" value="#0" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h3>Essen</h3>
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <input data-sh="eg.essen.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" /><br/><br/>
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.essen.licht" data-sh-long="eg.essen.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="eg.essen.licht" data-sh-long="eg.essen.licht.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.essen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <input data-sh="eg.jalousie.west.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <input data-sh="eg.jalousie.west.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.jalousie.west.kurz" data-sh-long="eg.jalousie.west.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="eg.jalousie.west.kurz" data-sh-long="eg.jalousie.west.lang" value="1" src="img/steuer_ab.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <div class="name">
+                                <span data-sh="eg.essen.jalousie.links.position" class="percent">100%</span> / 
+                                <span data-sh="eg.essen.jalousie.links.lamelle" class="percent">62%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-red">
+                        <div class="tile-content">
+                            <div class="item_value"><span data-sh="eg.essen.heizung.ist" class="temperature">22,5°C</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h3>Wohnen</h3>
+                <div class="clearfix">
+                    
+                    <div class="tile bg-color-yellow dimmer">
+                        <div class="tile-content">
+                            <input data-sh="eg.wohnen.licht.wert" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="eg.wohnen.licht" data-sh-long="eg.wohnen.licht.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/licht_licht.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.wohnen.licht.wert" class="percent"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-green jalousie">
+                        <div class="tile-content">
+                            <input data-sh="eg.wohnen.jalousie.position" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <input data-sh="eg.wohnen.jalousie.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.wohnen.jalousie.lang" value="0" src="img/steuer_auf.png" />
+                                <img class="controls_right" data-sh="eg.wohnen.jalousie.kurz" data-sh-long="eg.wohnen.jalousie.lang" value="1" src="img/steuer_ab.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/fts_rollo.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.wohnen.jalousie.position" class="percent"></span> / 
+                                <span data-sh="eg.wohnen.jalousie.lamelle" class="percent"></span>
                             </div>
                         </div>
                     </div>
 
                     <div data-sh="eg.wohnen.kugellampe" class="tile bg-color-yellow switch">
                         <div class="tile-content">
-                            <h2>Wohnen</h2>
-                            <h5>Kugellampe</h5>
-                            <div style="margin: 5px 0 0 37px;"><img src="img/steuer_standby.png" width="48" height="48" /></div>
+                            <h2>Kugel</h2>
+                            <h5>&nbsp;</h5>
+                            <img class="item_icon" src="img/steuer_standby.png" />
                         </div>
                         <div class="brand">
-                            <div style="margin: 0 0 0 10px;">
-                                <img src="img/licht_licht.png" widht="24" height="24" />
-                            </div>
+                            <img class="item_icon" src="img/licht_licht.png" />
                             <div class="badge unavailable bg-color-yellow"></div>
                         </div>
                     </div>
 
-                    <div class="tile bg-color-red icon">
+                    <div data-sh="eg.wohnen.stehlampe" class="tile bg-color-yellow switch icon">
                         <div class="tile-content">
-                            <img src="img/Music128.png" alt="">
+                            <img class="item_icon" src="img/licht_stehlampe.png" />
                         </div>
                         <div class="brand">
-                            <span class="name">Audio</span>
-                            <div class="badge"><img src="img/bage-playing.png"></div>
+                            <div class="badge unavailable bg-color-yellow"></div>
                         </div>
                     </div>
 
-                    <div class="tile double bg-color-blueDark">
-                        <div class="tile-content">
-
-                            <h2>Wetter</h2>
-                            <h5>Leicht bewölkt</h5>
-                            <p>
-                                Im Verlauf des Tages kann es zu kurzen Schauern und Gewittern kommen.
-                            </p>
-                        </div>
-                        <div class="brand">
-                            <div class="badge">22°C</div>
-                            <div class="icon icon-cloud-overcast" />
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
