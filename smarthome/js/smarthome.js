@@ -244,9 +244,9 @@ function shPageShow() {
 	    $('.color-picker').miniColors({
 		    change: function(hex, rgba) {
                 id = $(this).attr('id');
-                $('#' + id + '_rot').val(rgba.r);
-                $('#' + id + '_gruen').val(rgba.g);
-                $('#' + id + '_blau').val(rgba.b);
+                $('#' + id + '_rot').val(rgba.r).trigger('change');
+                $('#' + id + '_gruen').val(rgba.g).trigger('change');
+                $('#' + id + '_blau').val(rgba.b).trigger('change');
 		    }
 	    });
     }
