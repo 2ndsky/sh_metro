@@ -240,7 +240,7 @@ function shPageShow() {
         shWsInit();
     };
 
-    if(jQuery().miniColors) {
+    if (jQuery().miniColors) {
 	    $('.color-picker').miniColors({
 		    change: function(hex, rgba) {
                 id = $(this).attr('id');
@@ -249,6 +249,23 @@ function shPageShow() {
                 $('#' + id + '_blau').val(rgba.b).trigger('change');
 		    }
 	    });
+    }
+
+    if (jQuery().idleTimer) {
+
+        if (document.location.href.match(/clock.html$/)) {
+            $.idleTimer(100);
+
+            $(document).bind("active.idleTimer", function() {
+                document.location.href='index.html';
+            });
+        } else {
+            $.idleTimer(120000);
+
+            $(document).bind("idle.idleTimer", function() {
+                document.location.href='clock.html';
+            });
+        }
     }
 };
 

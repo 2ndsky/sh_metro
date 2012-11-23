@@ -7,10 +7,9 @@
   font-weight: normal;
   position:relative;
   display:block;
-  color:#000;
   font-size:30px;
-  background: rgb(100,120,0);
-  background: rgb(100,120,0) linear-gradient(-75deg, rgba(0,0,0,0) 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.0) 100%);
+  background: black;
+  background: black -webkit-linear-gradient(-75deg, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.0) 100%);
   width:550px;
   padding:70px;
   margin:0 auto;
@@ -22,15 +21,18 @@
    display:inline-block;
    line-height:41px;
    text-align:center;
-   color:#000;
    transition:all 0.5s linear;
 }
 #letters span{
     width:35px;
 }
 
+#clock span {
+   color:dimgrey;
+}
 
 #clock .light{
+  font-weight: bold;
   color:#fff !important;
   text-shadow: 0px 0px 5px #fff;
 }

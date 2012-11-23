@@ -74,7 +74,6 @@ input.ui-slider-input { display:none !important; }
       line-height: 20px;
     }
 
-
     /* Clock styles */
     #clock { font-size:14px; width:250px; height:250px; padding:31px; margin:0; }
     #letters, #letters span{ line-height:18px; }
