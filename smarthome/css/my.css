@@ -25,6 +25,16 @@ input.ui-slider-input { display:none !important; }
 .ui-shadow { moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 .ui-btn-inner { border: 0; }
 
+/* Clock styles */
+#clock { font-size:17px; width:310px; height:310px; padding:39px; margin:0; }
+#letters, #letters span{ line-height:23px; }
+#letters span{ width:20px; }
+#e0,#e1,#e2,#e3{ font-size:8px; }
+#e0, #e1{ top:8px; }
+#e2, #e1{ right:14px; }
+#e0, #e3{ left:14px; }
+#e2, #e3{ bottom:11px; }
+
 /* Large desktop */
 @media (min-width: 1200px) {
   
@@ -63,6 +73,17 @@ input.ui-slider-input { display:none !important; }
       margin: 0;
       line-height: 20px;
     }
+
+
+    /* Clock styles */
+    #clock { font-size:14px; width:250px; height:250px; padding:31px; margin:0; }
+    #letters, #letters span{ line-height:18px; }
+    #letters span{ width:16px; }
+    #e0,#e1,#e2,#e3{ font-size:6px; }
+    #e0, #e1{ top:6px; }
+    #e2, #e1{ right:11px; }
+    #e0, #e3{ left:11px; }
+    #e2, #e3{ bottom:9px; }
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {

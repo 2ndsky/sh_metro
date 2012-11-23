@@ -10,6 +10,7 @@
     <link href="css/modern.css" rel="stylesheet"></link>
     <link href="css/modern-responsive.css" rel="stylesheet"></link>
     <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
+    <link href="css/clock.css" rel="stylesheet"></link>
     <link href="css/my.css" rel="stylesheet"></link>
 
     <script src="js/jquery-1.8.2.min.js"></script>
@@ -31,6 +32,18 @@
         <div class="page-region">
             <div class="page-region-content">
                 <div class="clearfix">
+
+                    <div class="tile double double-vertical icon">
+                        <div class="tile-content">
+                            <div id="clock">
+                                <span id="e0">●</span>
+                                <span id="e1">●</span>
+                                <span id="e2">‌●</span>
+                                <span id="e3">‌●</span>
+                              	<div id="letters"></div>
+                            </div>​
+                        </div>
+                    </div>
 
                     <div class="tile icon" onclick="javascript:document.location.href='eg.html'">
                         <div class="tile-content">
@@ -69,15 +82,6 @@
                             <span class="name">Schlafbereich</span>
                         </div>
                     </div>
-
-                    <div class="tile" onclick="javascript:document.location.href='zentral.html'">
-                        <div class="tile-content">
-                            <h2>Zentral</h2>
-                        </div>
-                        <div class="brand">
-                            <span class="name">Zentralbedienung</span>
-                        </div>
-                    </div>
                     
                     <div class="tile double image">
                         <div class="tile-content">
@@ -97,10 +101,31 @@
                             <span class="name">Webcam Ravensburg</span>
                         </div>
                     </div>
+
+                    <div class="tile" onclick="javascript:document.location.href='zentral.html'">
+                        <div class="tile-content">
+                            <h2>Zentral</h2>
+                        </div>
+                        <div class="brand">
+                            <span class="name">Zentralbedienung</span>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-blueDark icon" onclick="javascript:document.location.href='clock.html'">
+                        <div class="tile-content">
+                            <img src="img/zeit_uhr.png" alt=""/>
+                        </div>
+                        <div class="brand">
+                            <span class="name">Uhrzeit</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="js/clock.js"></script>
 </body>
 </html>
 
