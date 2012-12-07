@@ -11,11 +11,12 @@
     <link href="css/theme-dark.css" rel="stylesheet">
     <link href="css/modern-responsive.css" rel="stylesheet">
 
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/google-analytics.js"></script>
-    <script src="js/jquery.mousewheel.min.js"></script>
-    <script src="js/github.info.js"></script>
-    <script src="js/tile-slider.js"></script>
+    <script src="js/assets/jquery-1.8.2.min.js"></script>
+    <script src="js/assets/google-analytics.js"></script>
+    <script src="js/assets/jquery.mousewheel.min.js"></script>
+    <script src="js/assets/github.info.js"></script>
+    <script src="js/modern/tile-slider.js"></script>
+    <script src="js/modern/tile-drag.js"></script>
 
     <title>Modern UI CSS</title>
 
@@ -85,7 +86,7 @@
 
     <div class="page-region">
         <div class="page-region-content tiles">
-            <div class="tile-group">
+            <div class="tile-group tile-drag">
                 <div class="tile image outline-color-green">
                     <div class="tile-content">
                         <img src="images/myface.jpg" alt="">
@@ -205,7 +206,7 @@
 
             </div>
 
-            <div class="tile-group" style="width: 322px;">
+            <div class="tile-group tile-drag" style="width: 322px;">
                 <div class="tile bg-color-blue icon">
                     <div class="tile-content">
                         <img src="images/InternetExplorer128.png"/>
@@ -312,7 +313,7 @@
                 </div>
             </div>
 
-            <div class="tile-group" style="width: 322px;">
+            <div class="tile-group tile-drag" style="width: 322px;">
                 <div class="tile double image">
                     <div class="tile-content">
                         <img src="images/4.jpg" alt="" />

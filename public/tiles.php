@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="Modern UI CSS">
-    <meta name="author" content="Sergey Pimenov">
-    <meta name="keywords" content="windows 8, modern style, modern ui, style, modern, css, framework">
+<? include("header.php")?>
 
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet" type="text/css">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
-
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/google-analytics.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-    <script src="js/github.info.js"></script>
-    <script src="js/tile-slider.js"></script>
-
-    <title>Modern UI CSS</title>
-</head>
-<body class="modern-ui" onload="prettyPrint()">
     <div class="page secondary">
-        <? include("header.php")?>
-
         <div class="page-header">
             <div class="page-header-content">
                 <h1>Tiles<small>demo</small></h1>
@@ -423,7 +400,7 @@
                     </div>
                 </div>
 
-                <div class="tiles clearfix">
+                <div class="tiles clearfix tile-drag" data-param-group="1">
                     <h3>Examples of tiles made with Metro UI CSS</h3>
                     <div class="tile image">
                         <div class="tile-content">
@@ -579,6 +556,45 @@
 
                 </div>
 
+                <div class="tiles clearfix tile-drag" data-param-group="1">
+                    <h3>Examples of tiles made with Metro UI CSS</h3>
+                    <div class="tile image">
+                        <div class="tile-content">
+                            <img src="images/myface.jpg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="tile icon">
+                        <div class="tile-content">
+                            <img src="images/Mail128.png"/>
+                        </div>
+                        <div class="brand">
+                            <div class="badge">10</div>
+                            <div class="name">Mail</div>
+                        </div>
+                    </div>
+
+                    <div class="tile bg-color-orangeDark icon selected">
+                        <b class="check"></b>
+                        <div class="tile-content">
+                            <img src="images/Video128.png" alt="" />
+                        </div>
+                        <div class="brand">
+                            <span class="name">Video</span>
+                        </div>
+                    </div>
+
+                    <div class="tile double image">
+                        <div class="tile-content">
+                            <img src="images/5.jpg" alt="" />
+                        </div>
+                        <div class="brand">
+                            <span class="name">Pictures</span>
+                            <div class="badge bg-color-orange">5</div>
+                        </div>
+                    </div>
+                </div>
+
                 <br />
                 <div class="grid">
                     <div class="row">
@@ -588,10 +604,6 @@
 
             </div>
         </div>
-        <? include("footer.php")?>
-
     </div>
-    <?php include("counter.php");?>
 
-</body>
-</html>
+<? include("footer.php")?>

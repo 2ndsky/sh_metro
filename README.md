@@ -2,7 +2,20 @@
 
 Metro UI CSS a set of styles to create a site with an interface similar to Windows 8 Metro UI. This set of styles was developed as a self-contained solution.
 
-Version 0.1.6
+### Version model
+x.x.x.x
+
+1) Major number
+
+2) Version of CSS
+
+3) Version of JS
+
+4) Fix
+
+# Current Version
+
+## 0.15.8.8
 
 See details of definition on [metroui.org.ua](http://metroui.org.ua)
 
@@ -18,6 +31,10 @@ Voljskiy, Russia.
 Project member.
 Javascript.
 
+# Pull requests
+
+Please create pull requests for develop branch. Requests in master branch can be ignored.
+
 # Credits
 
 Metro UI CSS now is a Microsoft BizSpark Startup
@@ -26,8 +43,6 @@ Normalize.css is a project by Nicolas Gallagher and Jonathan Neal.
 
 Sites and Projects inspired by Metro UI CSS:
 
-* [Droptiles](http://oazabir.github.com/Droptiles/).
-* [bootmetro](http://aozora.github.com/bootmetro/).
 * [forecast.org.ua](http://forecast.org.ua).
 
 ## Special thanks

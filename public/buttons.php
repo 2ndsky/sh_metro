@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="Modern UI CSS">
-    <meta name="author" content="Sergey Pimenov">
-    <meta name="keywords" content="windows 8, modern style, modern ui, style, modern, css, framework">
-
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet" type="text/css">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
-
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/google-analytics.js"></script>
-    <script src="js/github.info.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-    <script src="js/buttonset.js"></script>
-
-    <title>Modern UI CSS</title>
-</head>
-<body class="modern-ui" onload="prettyPrint()">
+<?include("header.php")?>
     <div class="page secondary">
-        <? include("header.php")?>
-
         <div class="page-header">
             <div class="page-header-content">
                 <h1>Buttons<small>demo</small></h1>
@@ -299,6 +275,45 @@
 </pre>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="span10">
+                            <h2>Pagination control</h2>
+
+                            <div class="pagination">
+                                <ul>
+                                    <li class="first"><a></a></li>
+                                    <li class="prev"><a></a></li>
+                                    <li><a>1</a></li>
+                                    <li><a>2</a></li>
+                                    <li class="active"><a>3</a></li>
+                                    <li class="spaces"><a>...</a></li>
+                                    <li class="disabled"><a>4</a></li>
+                                    <li><a>500</a></li>
+                                    <li class="next"><a></a></li>
+                                    <li class="last"><a></a></li>
+                                </ul>
+                            </div>
+<pre class="prettyprint linenums">
+    &lt;div class="pagination"&gt;
+        &lt;ul&gt;
+            &lt;li class="first"&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="prev"&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;1&lt;/a&gt;&lt;/li&gt;
+            ...
+            &lt;li class="active"&gt;&lt;a&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="disabled"&gt;&lt;a&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="spaces"&gt;&lt;a&gt;...&lt;/a&gt;&lt;/li&gt;
+            ...
+            &lt;li&gt;&lt;a&gt;N&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="next"&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="last"&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+</pre>
+
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid">
@@ -309,9 +324,6 @@
 
             </div>
         </div>
-        <? include("footer.php")?>
     </div>
-    <?php include("counter.php");?>
 
-</body>
-</html>
+<? include("footer.php")?>

@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="Modern UI CSS">
-    <meta name="author" content="Sergey Pimenov">
-    <meta name="keywords" content="windows 8, modern style, modern ui, style, modern, css, framework">
+<? include("header.php")?>
 
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet" type="text/css">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
-
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/google-analytics.js"></script>
-    <script src="js/github.info.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-
-    <title>Modern UI CSS</title>
-</head>
-<body class="modern-ui" onload="prettyPrint()">
     <div class="page secondary">
-        <? include("header.php")?>
-
         <div class="page-header">
             <div class="page-header-content">
                 <h1>Forms<small>demo</small></h1>
@@ -37,51 +15,55 @@
                         <div class="span3">
                             <h2>Check box</h2>
                             <form>
-                                <label class="checkbox as-block" onclick="">
-                                    <input type="checkbox" checked="" value="1"/>
-                                    <span>Checked</span>
+                                <label class="input-control checkbox" onclick="">
+                                    <input type="checkbox" checked value="1"/>
+                                    <span class="helper">Checked box</span>
                                 </label>
 
-                                <label class="checkbox as-block" onclick="">
+                                <label class="input-control checkbox" onclick="">
                                     <input type="checkbox" />
-                                    <span>Unchecked</span>
+                                    <span class="helper">Unchecked</span>
                                 </label>
 
-                                <label class="checkbox intermediate as-block" onclick="">
-                                    <input type="checkbox"/>
-                                    <span>Intermediate</span>
-                                </label>
-
-                                <label class="checkbox as-block">
+                                <label class="input-control checkbox">
                                     <input type="checkbox" disabled=""/>
-                                    <span>Disabled Unchecked</span>
+                                    <span class="helper">Disabled Unchecked</span>
                                 </label>
 
-                                <label class="checkbox as-block">
+                                <label class="input-control checkbox">
                                     <input type="checkbox" disabled="" checked=""/>
-                                    <span>Disabled Checked</span>
+                                    <span class="helper">Disabled Checked</span>
                                 </label>
+
+                                <label class="input-control checkbox intermediate" onclick="">
+                                    <input type="checkbox"/>
+                                    <span class="helper">Intermediate</span>
+                                </label>
+
                             </form>
                         </div>
 
                         <div class="span3">
                             <h2>Radio box</h2>
                             <form>
-                                <label class="radiobox as-block" onclick="">
+                                <label class="input-control radio" onclick="">
                                     <input type="radio" name="r1"  checked=""/>
-                                    <span>Checked</span>
+                                    <span class="helper">Checked radio</span>
                                 </label>
-                                <label class="radiobox as-block" onclick="">
+
+                                <label class="input-control radio" onclick="">
                                     <input type="radio" name="r1" />
-                                    <span>Unchecked</span>
+                                    <span class="helper">Checked radio</span>
                                 </label>
-                                <label class="radiobox as-block" onclick="">
-                                    <input type="radio" name="r1" disabled=""/>
-                                    <span>Disabled Unchecked</span>
+
+                                <label class="input-control radio" onclick="">
+                                    <input type="radio" name="r1" disabled/>
+                                    <span class="helper">Checked radio</span>
                                 </label>
-                                <label class="radiobox as-block" onclick="">
+
+                                <label class="input-control radio" onclick="">
                                     <input type="radio" name="r2" disabled="" checked=""/>
-                                    <span>Disabled Checked</span>
+                                    <span class="helper">Disabled Checked</span>
                                 </label>
                             </form>
                         </div>
@@ -89,21 +71,21 @@
                         <div class="span3">
                             <h2>Switch Control</h2>
                             <form>
-                                <label class="switch as-block" onclick="">
+                                <label class="input-control switch" onclick="">
                                     <input type="checkbox" checked=""/>
-                                    <span>Switch is On</span>
+                                    <span class="helper">Switch is On</span>
                                 </label>
-                                <label class="switch as-block" onclick="">
+                                <label class="input-control switch" onclick="">
                                     <input type="checkbox" />
-                                    <span>Switch is Off</span>
+                                    <span class="helper">Switch is Off</span>
                                 </label>
-                                <label class="switch as-block" onclick="">
+                                <label class="input-control switch" onclick="">
                                     <input type="checkbox" disabled=""/>
-                                    <span>Off and Disabled</span>
+                                    <span class="helper">Off and Disabled</span>
                                 </label>
-                                <label class="switch as-block" onclick="">
+                                <label class="input-control switch" onclick="">
                                     <input type="checkbox" disabled="" checked=""/>
-                                    <span>On and Disabled</span>
+                                    <span class="helper">On and Disabled</span>
                                 </label>
                             </form>
                         </div>
@@ -113,19 +95,19 @@
                         <div class="span10">
 
 <pre class="prettyprint linenums">
-    &lt;label class="checkbox"&gt;
+    &lt;label class="input-control checkbox"&gt;
         &lt;input type="checkbox"&gt;
-        &lt;span&gt;CheckBox Caption&lt;/span&gt;
+        &lt;span class="helper"&gt;CheckBox Caption&lt;/span&gt;
     &lt;/label&gt;
 
-    &lt;label class="radiobox"&gt;
+    &lt;label class="input-control radio"&gt;
         &lt;input type="radio"&gt;
-        &lt;span&gt;CheckBox Caption&lt;/span&gt;
+        &lt;span class="helper"&gt;CheckBox Caption&lt;/span&gt;
     &lt;/label&gt;
 
-    &lt;label class="switch"&gt;
+    &lt;label class="input-control switch"&gt;
         &lt;input type="checkbox"&gt;
-        &lt;span&gt;CheckBox Caption&lt;/span&gt;
+        &lt;span class="helper"&gt;CheckBox Caption&lt;/span&gt;
     &lt;/label&gt;
 </pre>
 
@@ -183,7 +165,7 @@
                             <h2>Password box</h2>
                             <form>
                                 <div class="input-control password">
-                                    <input type="password" autofocus/>
+                                    <input type="password"/>
                                     <span class="helper"></span>
                                 </div>
                                 <div class="input-control password">
@@ -374,10 +356,6 @@
 
             </div>
         </div>
-        <? include("footer.php")?>
-
     </div>
-    <?php include("counter.php");?>
 
-</body>
-</html>
+<? include("footer.php")?>
