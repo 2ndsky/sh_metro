@@ -193,7 +193,7 @@ function shPageInit() {
                     $(obj).data('long', true);
                     var path = $(obj).attr('data-sh-long');
                     if ( path == shLock) { return; };
-                    var val = Number($(obj).attr("value"))
+                    var val = Number($(obj).attr("value"));
                     shBufferUpdate(path, [val, 1], obj, true);
                 }, 400)
             );
@@ -206,6 +206,38 @@ function shPageInit() {
                 if ( path == shLock) { return; };
                 var val = Number($(this).attr("value"));
                 shBufferUpdate(path, [0, 0], this, true);
+            } else {
+                shSendFix(this);
+            }
+        });
+    });
+
+    $(document).find(".dimmer2").each(function() {
+        $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
+            event.preventDefault();
+            var obj = this;
+            $(obj).data('timer', 
+                setTimeout(function() {
+                    $(obj).data('long', true);
+
+                    var fn = function() {
+                        $(obj).data('timer', setTimeout(function() {
+                            var path = $(obj).attr('data-sh-long');
+                            if (path == shLock) { return; }
+                            var val = Number($(obj).attr("value"));
+                            shBufferUpdate(path, [val, 1], obj, true);
+                            fn();
+                        }, 200));
+                    };
+
+                    fn();
+                }, 400)
+            );
+        });
+        $(this).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
+            clearTimeout($(this).data('timer'))
+            if ($(this).data('long')) {
+                $(this).data('long', false);
             } else {
                 shSendFix(this);
             }
@@ -397,7 +429,10 @@ function shUpdateItem(path, val, src) {
         };
         switch(element) {
             case 'DIV':
-                if ( $(this).hasClass("tile") == false ){
+                if ( $(this).hasClass("badge") == true ){
+                    $(this).removeClass(val ? "off" : "on");
+                    $(this).addClass(val ? "on" : "off");
+                } else if ( $(this).hasClass("tile") == false ){
                     $(this).html(val);
                 };
                 break;
