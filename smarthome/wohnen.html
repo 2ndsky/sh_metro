@@ -69,20 +69,12 @@
                             </div>
                         </div>
                     </div>
-                    
+                                        
                     <div class="tile bg-color-red">
                         <div class="tile-content">
-                            <h2><span data-sh="eg.kueche.heizung.ist" class="temperature">22,2°C</span></h2>
+                            <img class="room_icon" src="img/szene_kochen.png" />
                             <div class="controls_container">
-                                <img class="controls_left" data-sh="eg.kueche.heizung.soll.up"  value="1" src="img/steuer_plus.png" />
-                                <img class="controls_right" data-sh="eg.kueche.heizung.soll.down" value="1" src="img/steuer_minus.png" />
-                            </div>
-                        </div>
-                        <div class="brand">
-                            <img class="item_icon" src="img/sani_heizung.png" />
-                            <div class="name item_value">
-                                <span data-sh="eg.kueche.heizung.soll" class="temperature">22,0°C</span> / 
-                                <span data-sh="eg.kueche.heizung.stellwert" class="percent">0%</span>
+                                <div class="item_value"><span data-sh="eg.kueche.heizung.ist" class="temperature">22,5°C</span></div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +140,10 @@
                     
                     <div class="tile bg-color-red">
                         <div class="tile-content">
-                            <div class="item_value"><span data-sh="eg.essen.heizung.ist" class="temperature">22,5°C</span></div>
+                            <img class="room_icon" src="img/szene_essen.png" />
+                            <div class="controls_container">
+                                <div class="item_value"><span data-sh="eg.essen.heizung.ist" class="temperature">22,5°C</span></div>
+                            </div>
                         </div>
                     </div>
 
@@ -191,15 +186,13 @@
                         </div>
                     </div>
 
-                    <div data-sh="eg.wohnen.kugellampe" class="tile bg-color-yellow switch">
+                    <div data-sh="eg.wohnen.kugellampe" class="tile bg-color-yellow switch icon">
                         <div class="tile-content">
-                            <h2>Kugel</h2>
-                            <h5>&nbsp;</h5>
-                            <img class="item_icon" src="img/steuer_standby.png" />
+                            <img class="item_icon" src="img/licht_licht.png" />
                         </div>
                         <div class="brand">
-                            <img class="item_icon" src="img/licht_licht.png" />
-                            <div class="badge unavailable bg-color-yellow"></div>
+                            <div class="name">Kugellampe</div>
+                            <div class="badge" data-sh="eg.wohnen.kugellampe"></div>
                         </div>
                     </div>
 
@@ -208,7 +201,25 @@
                             <img class="item_icon" src="img/licht_stehlampe.png" />
                         </div>
                         <div class="brand">
-                            <div class="badge unavailable bg-color-yellow"></div>
+                            <div class="name">Stehlampe</div>
+                            <div class="badge" data-sh="eg.wohnen.stehlampe"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile bg-color-orangeDark dimmer2">
+                        <div class="tile-content">
+                            <img class="room_icon" src="img/sofa.png" />
+                            <div class="controls_container">
+                                <img class="controls_left" data-sh="eg.wohnen.audio" data-sh-long="eg.wohnen.audio.volume.dim" value="1" src="img/steuer_plus.png" />
+                                <img class="controls_right" data-sh="eg.wohnen.audio" data-sh-long="eg.wohnen.audio.volume.dim" value="0" src="img/steuer_minus.png" />
+                            </div>
+                        </div>
+                        <div class="brand">
+                            <img class="item_icon" src="img/audio_kopfhoerer.png" />
+                            <div class="name item_value">
+                                <span data-sh="eg.wohnen.audio.volume" class="percent"></span>
+                            </div>
+                            <div class="badge" data-sh="eg.wohnen.audio"></div>
                         </div>
                     </div>
 
