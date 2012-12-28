@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, maximum-scale=1">
     <meta name="author" content="Niko Will">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -16,6 +16,8 @@
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/jquery.mobile-1.2.0.js"></script>
     <script src="js/jquery.idle-timer.js"></script>
+    <script src="js/jquery.flot.min.js"></script>
+    <script src="js/jquery.flot.time.min.js"></script>
     <script src="js/smarthome.js"></script>
     <script src="js/my.smarthome.js"></script>
 
@@ -95,7 +97,7 @@
                     
                     <div class="tile double image">
                         <div class="tile-content">
-                            <img style="margin-top: -30px;" src="http://192.168.178.38/cgi-bin/image.jpg?size=320x180?quality=60" alt="" />
+                            <img style="margin-top: -30px;" src="" alt="" />
                         </div>
                         <div class="brand">
                             <span class="name">Haust&uuml;re</span>
@@ -109,6 +111,29 @@
                         </div>
                         <div class="brand">
                             <span class="name">Webcam Ravensburg</span>
+                        </div>
+                    </div>
+
+                    <div class="tile double bg-color-green">
+                        <div class="tile-content">
+                            <div style="position:absolute;top:25px;right:25px;left:25px;bottom:25px;" data-rrd="system.memory='label': 'Memory (kilobytes)'" data-frame="1d" 
+data-options="
+    'series': {
+        'color': 'rgba(255, 255, 255, 1)',
+        'lines': { 
+            'show': true,
+            'fill': true, 
+            'fillColor': 'rgba(255, 255, 255, 1)'
+        }
+    },
+    'xaxis': { 'show': false },
+    'yaxis': { 'show': false },
+    'legend': { 'show': false },
+    'grid': { 'show': false }
+"></div>
+                        </div>
+                        <div class="brand">
+                            <span class="name">Speicher</span>
                         </div>
                     </div>
 
