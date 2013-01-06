@@ -218,10 +218,13 @@ function shPageInit() {
             var obj = this;
             $(obj).data('timer', 
                 setTimeout(function() {
+                    clearTimeout($(obj).data('timer'));
                     $(obj).data('long', true);
 
                     var fn = function() {
                         $(obj).data('timer', setTimeout(function() {
+                            clearTimeout($(obj).data('timer'));
+                            if ($(obj).data('long') == false) { return; }
                             var path = $(obj).attr('data-sh-long');
                             if (path == shLock) { return; }
                             var val = Number($(obj).attr("value"));
