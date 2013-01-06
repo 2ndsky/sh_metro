@@ -18,9 +18,11 @@
 //  along with SmartHome.py. If not, see <http://www.gnu.org/licenses/>.
 //########################################################################
 
-var shVersion = 0.7;
+var shVersion = 0.72;
 var shWS = false; // WebSocket
 var shLock = false;
+var shRRD = {};
+var shLog = {};
 var shURL = '';
 var shBuffer = {};
 var shOpt = {};
@@ -66,8 +68,8 @@ function shInit(url) {
     $(document).on("click", 'img[data-logic]', function() { // Logic-Trigger Button
         shTriggerLogic(this);
     });
-    $(document).on("click", 'img.switch[data-sh]', function() { // Switch Image Button
-        shSwitchImageButton(this);
+    $(document).on("click", 'img.switch[data-sh]', function() { // Switch Button
+        shSwitchButton(this);
     });
     $(document).on("click", 'img.set[data-sh]', function() { // Send Button
         shSendFix(this);
@@ -105,12 +107,117 @@ function shInit(url) {
     });
 };
 
+function shLogUpdate(path, data) {
+    var obj = $('[data-log="' + path + '"]');
+    var max = parseInt($(obj).attr('data-max'));
+    if (obj.length == 0) {
+        console.log("unknown id: "+ path);
+        return;
+    }
+    if (data.length > 1) {
+        $(obj).html('')
+    };
+    for (var i = 0; i < data.length; i++) {
+        $(obj).prepend("<li>" + data[i] + "</li>\n")
+    };
+    if (max != null) {
+        while ($(obj).children().length > max) {
+            $(obj).children().last().remove()
+        };
+    };
+    $(obj).listview('refresh');
+};
+
+
+function shRRDUpdate(data) {
+    var id, frame, rrds, item, value;
+    if ('frame' in data) {
+        id = data.id;
+        var time = data.start * 1000;
+        var step = data.step * 1000;
+        var d = [];
+        frame = data.frame;
+        //{color: 'blue', label: data.label, yaxis: 2, data: []};
+        for (i = 0; i < data.data.length; i++) {
+            d.push([time, data.data[i]]);
+            time += step
+        };
+        if (id in shRRD) {
+            shRRD[id][frame]= d;
+        } else {
+            shRRD[id] = {};
+            shRRD[id][frame] = d;
+        };
+        $.mobile.activePage.find($("[data-rrd]")).each(function() {
+            rrds = $(this).attr('data-rrd').split('|');
+            for (i = 0; i < rrds.length; i++) {
+                rrd = rrds[i].split('=');
+                if (rrd[0] == id) {
+                    // incoming item found in current graph
+                    frame = $(this).attr('data-frame')
+                    if (id in shRRD) {
+                        if (frame in shRRD[id]) {
+                            shRRDDraw(this);
+                        };
+                    };
+                    break;
+                };
+            };
+        });
+    } else {
+        var time = data.time * 1000;
+        for (item in data.data) {
+            id = data.data[item][0];
+            value = data.data[item][1];
+            if (id in shRRD) {
+                for (frame in shRRD[id]) {
+                    if (frame.search(/^([0-9]+h)|([1-7]d)/) != -1) {
+                        shRRD[id][frame].shift()  // remove 'oldest' element
+                    };
+                    shRRD[id][frame].push([time, value]);
+                };
+            };
+        };
+        $.mobile.activePage.find($("[data-rrd]")).each(function() {
+            shRRDDraw(this);
+        });
+    };
+};
+
+function shRRDDraw(div) {
+    var rrds = $(div).attr('data-rrd').split('|');
+    var frame = $(div).attr('data-frame')
+    var series = [];
+    var options = {xaxis: {mode: "time"}};
+    if ($(div).attr('data-options'))
+        options = JSON.parse("{" + $(div).attr('data-options').replace(/'/g, '"') + "}") ;
+    for (i = 0; i < rrds.length; i++) {
+        var serie = {};
+        rrd = rrds[i].split('=');
+        var tid = rrd[0];
+        if (tid in shRRD) {
+            if (frame in shRRD[tid]) {
+                if (rrd[1] != undefined) {
+                    serie = JSON.parse("{" + rrd[1].replace(/'/g, '"') + "}") ;
+                }else {
+                    serie = {}
+                };
+                serie['data'] = shRRD[tid][frame]
+                series.push(serie);
+            };
+        };
+    };
+    if (series.length > 0) {
+        $.plot($(div), series, options);
+    };
+};
+
 function shWsInit() {
     shWS = new WebSocket(shURL);
     shWS.onopen = function(){
         shSend([ 'SmartHome.py', 1 ]);
-        shSend([ 'monitor', shMonitor ]);
-        //$('.ui-dialog').dialog('close');
+        shRequestData();
+        $('.ui-dialog').dialog('close');
     };
     shWS.onmessage = function(event) {
         var path, val;
@@ -132,6 +239,12 @@ function shWsInit() {
                     shLock = false;
                 };
                 break;
+            case 'rrd':
+                shRRDUpdate(data[1]);
+                break;
+            case 'log':
+                shLogUpdate(data[1][0], data[1][1]);
+                break;
             case 'dialog':
                 shDialog(data[1][0], data[1][1]);
                 break;
@@ -148,22 +261,46 @@ function shWsInit() {
 function shWSCheckInit() {
     setInterval(shWSCheck, 2000);
 };
+
 function shWSCheck() {
     // check connection
     // if connection is lost try to reconnect
     if ( shWS.readyState > 1 ){ shWsInit(); };
 };
 
-// page handling //
-function shPageCreate() {
-    console.log('Page Create');
+function shRequestData() {
     shMonitor = $("[data-sh]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh"); }}).add($("[data-sh-long]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh-long"); }})).get();
     shMonitor = shUnique(shMonitor);
     shSend(['monitor', shMonitor]);
+    $("[data-rrd]").each( function() {
+        var rrds = $(this).attr('data-rrd').split('|');
+        var frame = $(this).attr('data-frame');
+        for (i = 0; i < rrds.length; i++) { 
+            var rrd = rrds[i].split('=');
+            var id = rrd[0];
+            if (!(id in shRRD)) {
+                shSend(['rrd', [rrd[0], frame]]);
+            } else if (!(frame in shRRD[id])) {
+                shSend(['rrd', [rrd[0], frame]]);
+            };
+        };
+    });
+    $("[data-log]").each( function() {
+        var log = $(this).attr('data-log');
+        var max = $(this).attr('data-max');
+        if (!(log in shLog)) {
+            shSend(['log', [log, max]]);
+        };
+    });
+};
+// page handling //
+function shPageCreate() {
+    console.log('PageCreate');
+    shRequestData();
     // create dialog page
     if ($('#shDialog').length == 0) {
         $.mobile.pageContainer.append('<div data-role="page" id="shDialog"><div data-role="header"><h1 id="shDialogHeader"></h1></div><div data-role="content"><div id="shDialogContent"></div></div></div>');
-    }
+    };
 };
 
 function shPageInit() {
@@ -274,6 +411,9 @@ function shPageShow() {
     if ( shWS.readyState > 1 ){ // Socket closed
         shWsInit();
     };
+    $.mobile.activePage.find($("[data-rrd]")).each(function() {
+        shRRDDraw(this);
+    });
 
     if (jQuery().miniColors) {
 	    $('.color-picker').miniColors({
@@ -306,7 +446,7 @@ function shPageShow() {
 
 // outgoing data //
 function shSend(data){
-    console.log("Websocket state: " + shWS.readyState);
+    // console.log("Websocket state: " + shWS.readyState);
     if ( shWS.readyState > 1 ){
         shWsInit();
     };
@@ -336,16 +476,6 @@ function shTriggerLogic(obj){
 };
 
 function shSwitchButton(obj){
-    var path = $(obj).attr('data-sh');
-    var val = true;
-    if ( String($(obj).val()) == '1') {
-        val = false;
-    };
-    shBufferUpdate(path, val, obj);
-    $(obj).val(Number(val));
-};
-
-function shSwitchImageButton(obj){
     var path = $(obj).attr('data-sh');
     var val = true;
     if ( String($(obj).val()) == '1') {
@@ -457,6 +587,9 @@ function shUpdateItem(path, val, src) {
             case 'INPUT':
                 updateInput(this, val);
                 break;
+            case 'UL':
+                updateList(this, val);
+                break;
             case 'IMG':
                 if ( $(this).attr("data-sh-long") ){
                     break;
@@ -498,6 +631,15 @@ function updateSelect(obj, val) {
             $(obj).selectmenu("refresh");
         } catch (e) {};
     };
+};
+
+function updateList(obj, val) {
+    $(obj).html('')
+    for (var i = 0; i < val.length; i++) {
+        $(obj).append("<li>" + val[i] + "</li>\n")
+    };
+    $(obj).listview('refresh');
+
 };
 
 function updateInput(obj, val) {
@@ -542,5 +684,5 @@ function shDialog(header, content){
     $('#shDialogHeader').html(header);
     $('#shDialogContent').html(content);
     //$('#shDialog').trigger('create');
-    //$.mobile.changePage('#shDialog', {transition: 'pop', role: 'dialog'} );
+    $.mobile.changePage('#shDialog', {transition: 'pop', role: 'dialog'} );
 };
