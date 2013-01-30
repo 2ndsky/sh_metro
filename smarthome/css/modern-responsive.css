@@ -459,6 +459,9 @@
     width: 120px;
     height: 120px;
   }
+  .tile.half {
+    width: 55px;
+  }
   .tile.double {
     width: 250px;
   }
@@ -467,6 +470,9 @@
   }
   .tile.quadro {
     width: 510px;
+  }
+  .tile.half-vertical {
+    height: 55px;
   }
   .tile.double-vertical {
     height: 250px;

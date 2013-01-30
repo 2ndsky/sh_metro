@@ -4601,6 +4601,9 @@ table.bordered tbody tr:last-child td {
   float: left;
   height: 100%;
 }
+.tile.half {
+  width: 70px;
+}
 .tile.double {
   width: 310px;
 }
@@ -4609,6 +4612,9 @@ table.bordered tbody tr:last-child td {
 }
 .tile.quadro {
   width: 630px;
+}
+.tile.half-vertical {
+  height: 70px;
 }
 .tile.double-vertical {
   height: 310px;
