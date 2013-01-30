@@ -2,16 +2,22 @@
 
 * { box-sizing: border-box; }
 
+body {
+  padding: 0;
+  margin: 0;
+  background-color: black;
+}
+
 #clock{
   font-family:'Josefin Sans', Arial, "Trebuchet MS", sans-serif;
   font-weight: normal;
   position:relative;
   display:block;
-  font-size:30px;
+  font-size:50px;
   background: black;
   background: black -webkit-linear-gradient(-75deg, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.0) 100%);
-  width:550px;
-  padding:70px;
+  width:1024px;
+  padding:70px 178px;
   margin:0 auto;
   transition:background-color 0.5s linear;
   text-shadow: None;
@@ -19,12 +25,12 @@
 
 #letters, #letters span{
    display:inline-block;
-   line-height:41px;
+   line-height:61px;
    text-align:center;
    transition:all 0.5s linear;
 }
 #letters span{
-    width:35px;
+    width:60px;
 }
 
 #clock span {

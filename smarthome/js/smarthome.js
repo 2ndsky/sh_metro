@@ -18,7 +18,8 @@
 //  along with SmartHome.py. If not, see <http://www.gnu.org/licenses/>.
 //########################################################################
 
-var shVersion = 0.72;
+var shVersion = 0.8;
+var shProto = 1;
 var shWS = false; // WebSocket
 var shLock = false;
 var shRRD = {};
@@ -32,6 +33,7 @@ var shMonitor = [];
 Array.prototype.diff = function(a) {
         return this.filter(function(i) {return !(a.indexOf(i) > -1);});
 };
+
 function shUnique(arr) {
     arr = arr.sort();
     var ret = [arr[0]];
@@ -43,11 +45,22 @@ function shUnique(arr) {
     return ret;
 };
 
+if (typeof String.prototype.startsWith != 'function') {
+  String.prototype.startsWith = function (str){
+    return this.slice(0, str.length) == str;
+  };
+}
+
+function shPushCycle(obj, timeout, value) {
+    shSendPush(obj, value);
+    $(obj).data('cycle', setTimeout(function(){shPushCycle(obj, timeout, value)}, timeout));
+};
+
 function shInit(url) {
     // Init WebSocket
     shURL = url;
     shWsInit();
-    setTimeout(shWSCheckInit , 2000);
+    setTimeout(shWSCheckInit, 2000);
     $(window).unload(function(){ shWS.close(); shWS = null });
     // Adding Listeners
     $(document).on( "pagecreate", function(){
@@ -62,9 +75,6 @@ function shInit(url) {
     $(document).on("click", 'a[data-logic]', function() { // Button
         shTriggerLogic(this);
     });
-    $(document).on("click", 'div.tile[data-sh]', function() { // Switch Button
-        shSwitchButton(this);
-    });
     $(document).on("click", 'img[data-logic]', function() { // Logic-Trigger Button
         shTriggerLogic(this);
     });
@@ -76,18 +86,34 @@ function shInit(url) {
     });
     $(document).on("vmousedown", 'img.push[data-sh]', function(event) { // Push Button
         event.preventDefault();
-        shSendPush(this, true);
+        var value = true;
+        var cycle = $(this).attr('data-cycle');
+        if (cycle == undefined) {
+            cycle = 1000;
+        } else {
+            cycle = parseInt(cycle);
+        };
+        var arr = $(this).attr('data-arr');
+        if (arr != undefined) {
+            value = [parseInt(arr), 1];
+        };
+        var path = $(this).attr('data-sh');
+        shPushCycle(this, cycle, value);
     });
     $(document).on("vmouseup", 'img.push[data-sh]', function() { // Push Button
-        shSendPush(this, false);
+        clearTimeout($(this).data('cycle'))
+        var value = false;
+        var arr = $(this).attr('data-arr');
+        if (arr != undefined) {
+            value = [parseInt(arr), 0];
+        };
+        var path = $(this).attr('data-sh');
+        shSendPush(this, value);
     });
     $(document).on("change", 'select[data-sh]', function() { // Select
         shSendSelect(this);
     });
     $(document).on("slidestop", 'input[data-sh][data-type="range"]', function() { // Slider
-        shSendNum(this);
-    });
-    $(document).on("change", 'input[data-sh][type="hidden"]', function() { // Hidden Field
         shSendNum(this);
     });
     $(document).on("change", 'input[data-sh][type="time"]', function() { // Time
@@ -107,39 +133,45 @@ function shInit(url) {
     });
 };
 
-function shLogUpdate(path, data) {
-    var obj = $('[data-log="' + path + '"]');
-    var max = parseInt($(obj).attr('data-max'));
-    if (obj.length == 0) {
-        console.log("unknown id: "+ path);
-        return;
-    }
-    if (data.length > 1) {
-        $(obj).html('')
-    };
-    for (var i = 0; i < data.length; i++) {
-        $(obj).prepend("<li>" + data[i] + "</li>\n")
-    };
-    if (max != null) {
-        while ($(obj).children().length > max) {
-            $(obj).children().last().remove()
+function shLogUpdate(data) {
+    var path, obj, max, val;
+    for (var i = 0; i < data.p.length; i++) {
+        path = data.p[i][0];
+        obj = $('[data-log="' + path + '"]');
+        if (obj.length == 0) {
+            console.log("unknown id: "+ path);
+            return;
+        }
+        val = data.p[i][1];
+        if ('i' in data) {  // init
+            $(obj).html('')
         };
+        for (var j = val.length -1; j >= 0; j--) {
+            $(obj).prepend(val[j] + "\n")
+        };
+        max = $(obj).attr('data-max');
+        if (max != undefined) {
+            max = parseInt(max);
+            while ($(obj).children().length > max) {
+                $(obj).children().last().remove()
+            };
+        };
+        $(obj).listview('refresh');
     };
-    $(obj).listview('refresh');
 };
 
 
 function shRRDUpdate(data) {
-    var id, frame, rrds, item, value;
-    if ('frame' in data) {
-        id = data.id;
-        var time = data.start * 1000;
-        var step = data.step * 1000;
+    var id, time, step, frame, rrds, item, value;
+    if ('f' in data) {
+        id = data.p[0][0];
+        time = data.s * 1000;
+        step = data.d * 1000;
         var d = [];
-        frame = data.frame;
+        frame = data.f;
         //{color: 'blue', label: data.label, yaxis: 2, data: []};
-        for (i = 0; i < data.data.length; i++) {
-            d.push([time, data.data[i]]);
+        for (i = 0; i < data.p[0][1].length; i++) {
+            d.push([time, data.p[0][1][i]]);
             time += step
         };
         if (id in shRRD) {
@@ -165,10 +197,10 @@ function shRRDUpdate(data) {
             };
         });
     } else {
-        var time = data.time * 1000;
-        for (item in data.data) {
-            id = data.data[item][0];
-            value = data.data[item][1];
+        var time = data.t * 1000;
+        for (item in data.p) {
+            id = data.p[item][0];
+            value = data.p[item][1];
             if (id in shRRD) {
                 for (frame in shRRD[id]) {
                     if (frame.search(/^([0-9]+h)|([1-7]d)/) != -1) {
@@ -199,7 +231,7 @@ function shRRDDraw(div) {
             if (frame in shRRD[tid]) {
                 if (rrd[1] != undefined) {
                     serie = JSON.parse("{" + rrd[1].replace(/'/g, '"') + "}") ;
-                }else {
+                } else {
                     serie = {}
                 };
                 serie['data'] = shRRD[tid][frame]
@@ -215,23 +247,27 @@ function shRRDDraw(div) {
 function shWsInit() {
     shWS = new WebSocket(shURL);
     shWS.onopen = function(){
-        shSend([ 'SmartHome.py', 1 ]);
+        shSend({'k': 'p', 'v': shProto});
+        shRRD = {};
+        shLog = {};
         shRequestData();
         $('.ui-dialog').dialog('close');
     };
     shWS.onmessage = function(event) {
+        // msg format
+        // k (ey) = i(tem)|l(og)|r(rd)|d(ialog)
+        // p (aylod) = array with [id, value] arrays
+        // rrd: f (rame), s (tart), d (elta)
         var path, val;
         var data = JSON.parse(event.data);
         console.log("receiving data: " + event.data);
-        command = data[0];
-        delete data[0];
-        switch(command) {
-            case 'item':
-                for (var i = 1; i < data.length; i++) {
-                    path = data[i][0];
-                    val = data[i][1];
-                    if ( data[i].length > 2 ) {
-                        shOpt[path] = data[i][2];
+        switch(data.k) {
+            case 'i':
+                for (var i = 0; i < data.p.length; i++) {
+                    path = data.p[i][0];
+                    val = data.p[i][1];
+                    if ( data.p[i].length > 2 ) {
+                        shOpt[path] = data.p[i][2];
                     };
                     shLock = path;
                     shBuffer[path] = val;
@@ -239,14 +275,23 @@ function shWsInit() {
                     shLock = false;
                 };
                 break;
-            case 'rrd':
-                shRRDUpdate(data[1]);
+            case 'r':
+                shRRDUpdate(data);
                 break;
-            case 'log':
-                shLogUpdate(data[1][0], data[1][1]);
+            case 'l':
+                shLogUpdate(data);
                 break;
-            case 'dialog':
-                shDialog(data[1][0], data[1][1]);
+            case 'd':
+                shDialog(data.h, data.c);
+                break;
+            case 'u':
+                shUrl(data.u);
+                break;
+            case 'p':
+                var proto = parseInt(data['p']);
+                if (proto != shProto) {
+                    shDialog('Protcol missmatch', 'Update smarthome(.min).js');
+                };
                 break;
         };
     };
@@ -269,9 +314,9 @@ function shWSCheck() {
 };
 
 function shRequestData() {
-    shMonitor = $("[data-sh]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh"); }}).add($("[data-sh-long]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh-long"); }})).get();
+    shMonitor = $("[data-sh]").map(function() { if (this.tagName != 'A') { return $(this).attr("data-sh"); }}).get();
     shMonitor = shUnique(shMonitor);
-    shSend(['monitor', shMonitor]);
+    shSend({'k': 'm', 'p': shMonitor});
     $("[data-rrd]").each( function() {
         var rrds = $(this).attr('data-rrd').split('|');
         var frame = $(this).attr('data-frame');
@@ -279,9 +324,9 @@ function shRequestData() {
             var rrd = rrds[i].split('=');
             var id = rrd[0];
             if (!(id in shRRD)) {
-                shSend(['rrd', [rrd[0], frame]]);
+                shSend({'k': 'r', 'p': rrd[0], 'f': frame});
             } else if (!(frame in shRRD[id])) {
-                shSend(['rrd', [rrd[0], frame]]);
+                shSend({'k': 'r', 'p': rrd[0], 'f': frame});
             };
         };
     });
@@ -289,7 +334,7 @@ function shRequestData() {
         var log = $(this).attr('data-log');
         var max = $(this).attr('data-max');
         if (!(log in shLog)) {
-            shSend(['log', [log, max]]);
+            shSend({'k':'l', 'l': log, 'm': max});
         };
     });
 };
@@ -314,96 +359,6 @@ function shPageInit() {
             delete shOpt[path];
         };
     };
-
-    var allsliders = $('input[data-sh][data-type="range"]');
-    allsliders.each(function (index, slider) {
-        $(slider).slider();
-    });
-
-    // Init Items
-    $(document).find(".dimmer").each(function() {
-        $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
-            event.preventDefault();
-            var obj = this;
-            $(obj).data('timer', 
-                setTimeout(function() {
-                    $(obj).data('long', true);
-                    var path = $(obj).attr('data-sh-long');
-                    if ( path == shLock) { return; };
-                    var val = Number($(obj).attr("value"));
-                    shBufferUpdate(path, [val, 1], obj, true);
-                }, 400)
-            );
-        });
-        $(this).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
-            clearTimeout($(this).data('timer'))
-            if ($(this).data('long')) {
-                $(this).data('long', false);
-                var path = $(this).attr('data-sh-long');
-                if ( path == shLock) { return; };
-                var val = Number($(this).attr("value"));
-                shBufferUpdate(path, [0, 0], this, true);
-            } else {
-                shSendFix(this);
-            }
-        });
-    });
-
-    $(document).find(".dimmer2").each(function() {
-        $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
-            event.preventDefault();
-            var obj = this;
-            $(obj).data('timer', 
-                setTimeout(function() {
-                    clearTimeout($(obj).data('timer'));
-                    $(obj).data('long', true);
-
-                    var fn = function() {
-                        $(obj).data('timer', setTimeout(function() {
-                            clearTimeout($(obj).data('timer'));
-                            if ($(obj).data('long') == false) { return; }
-                            var path = $(obj).attr('data-sh-long');
-                            if (path == shLock) { return; }
-                            var val = Number($(obj).attr("value"));
-                            shBufferUpdate(path, [val, 1], obj, true);
-                            fn();
-                        }, 200));
-                    };
-
-                    fn();
-                }, 400)
-            );
-        });
-        $(this).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
-            clearTimeout($(this).data('timer'))
-            if ($(this).data('long')) {
-                $(this).data('long', false);
-            } else {
-                shSendFix(this);
-            }
-        });
-    });
-
-    $(document).find(".jalousie").each(function() {
-        $(this).on("vmousedown", 'img[data-sh-long]', function(event) { // Short/Long Button
-            event.preventDefault();
-            var obj = this;
-            $(obj).data('timer', 
-                setTimeout(function() {
-                    $(obj).data('long', true);
-                    shSendFixLong(obj);
-                }, 400)
-            );
-        });
-        $(this).on("vmouseup", 'img[data-sh-long]', function() { // Short/Long Button
-            clearTimeout($(this).data('timer'))
-            if ($(this).data('long')) {
-                $(this).data('long', false);
-            } else {
-                shSendFix(this);
-            }
-        });
-    });
 };
 
 function shPageShow() {
@@ -414,34 +369,6 @@ function shPageShow() {
     $.mobile.activePage.find($("[data-rrd]")).each(function() {
         shRRDDraw(this);
     });
-
-    if (jQuery().miniColors) {
-	    $('.color-picker').miniColors({
-		    change: function(hex, rgba) {
-                id = $(this).attr('id');
-                $('#' + id + '_rot').val(rgba.r).trigger('change');
-                $('#' + id + '_gruen').val(rgba.g).trigger('change');
-                $('#' + id + '_blau').val(rgba.b).trigger('change');
-		    }
-	    });
-    }
-
-    if (jQuery().idleTimer) {
-
-        if (document.location.href.match(/clock.html$/)) {
-            $.idleTimer(100);
-
-            $(document).bind("active.idleTimer", function() {
-                document.location.href='index.html';
-            });
-        } else {
-            $.idleTimer(120000);
-
-            $(document).bind("idle.idleTimer", function() {
-                document.location.href='clock.html';
-            });
-        }
-    }
 };
 
 // outgoing data //
@@ -451,7 +378,7 @@ function shSend(data){
         shWsInit();
     };
     if ( shWS.readyState == 1 ) {
-        console.log('sending data: ' + data);
+        console.log('sending data: ' + JSON.stringify(data));
         shWS.send(unescape(encodeURIComponent(JSON.stringify(data))));
         return true;
     } else {
@@ -460,19 +387,19 @@ function shSend(data){
     };
 };
 
-function shBufferUpdate(path, val, src, enforce){
+function shBufferUpdate(path, val, src){
     if ( path in shBuffer) {
-        if (shBuffer[path] !== val || enforce){
+        if (shBuffer[path] !== val){
             console.log(path + " changed to: " + val + " (" + typeof(val) + ")");
             shBuffer[path] = val;
-            shSend([ 'item', [ path, val ]]);
+            shSend({'k': 'i', 'p': path, 'v': val});
             shUpdateItem(path, val, src);
         };
     };
 };
 
 function shTriggerLogic(obj){
-    shSend(['logic', [ $(obj).attr('data-logic'), $(obj).attr('value') ]]);
+    shSend({'k':'c', 'l': $(obj).attr('data-logic'), 'v': $(obj).attr('value')});
 };
 
 function shSwitchButton(obj){
@@ -502,20 +429,13 @@ function shSendFix(obj){
     var path = $(obj).attr('data-sh');
     if ( path == shLock) { return; };
     var val = Number($(obj).attr("value"));
-    shBufferUpdate(path, val, obj, true);
-};
-
-function shSendFixLong(obj){
-    var path = $(obj).attr('data-sh-long');
-    if ( path == shLock) { return; };
-    var val = Number($(obj).attr("value"));
-    shBufferUpdate(path, val, obj, true);
+    shBufferUpdate(path, val, obj);
 };
 
 function shSendPush(obj, val){
     var path = $(obj).attr('data-sh');
     if ( path == shLock) { return; };
-    shBufferUpdate(path, val, obj);
+    shSend({'k': 'i', 'p': path, 'v': val});
 };
 
 function shSendVal(obj){
@@ -562,21 +482,18 @@ function shUpdateItem(path, val, src) {
         };
         switch(element) {
             case 'DIV':
-                if ( $(this).hasClass("badge") == true ){
-                    $(this).removeClass(val ? "off" : "on");
-                    $(this).addClass(val ? "on" : "off");
-                } else if ( $(this).hasClass("tile") == false ){
-                    $(this).html(val);
+                var unit = $(obj).attr('data-unit');
+                if (unit != null) {
+                    val = val + ' ' + unit
                 };
+                $(this).html(val);
                 break;
             case 'SPAN':
-                if ( $(this).hasClass("percent") ) {
-                    $(this).html(val + "%");
-                } else if ( $(this).hasClass("temperature") ) {
-                    $(this).html(val.toFixed(1) + "°C");
-                } else {
-                    $(this).html(val);
-                }
+                var unit = $(obj).attr('data-unit');
+                if (unit != null) {
+                    val = val + ' ' + unit
+                };
+                $(this).html(val);
                 break;
             case 'TEXTAREA':
                 $(this).val(val);
@@ -591,11 +508,7 @@ function shUpdateItem(path, val, src) {
                 updateList(this, val);
                 break;
             case 'IMG':
-                if ( $(this).attr("data-sh-long") ){
-                    break;
-                }
-
-                if ( $(this).attr("class") != "set" ){
+                if ( $(this).attr("class") != "set" && $(this).attr("class") != "push"){
                     if ( path in shOpt ){
                         $(this).attr("src", shOpt[path][Number(val)]);
                         $(this).val(Number(val));
@@ -636,7 +549,11 @@ function updateSelect(obj, val) {
 function updateList(obj, val) {
     $(obj).html('')
     for (var i = 0; i < val.length; i++) {
-        $(obj).append("<li>" + val[i] + "</li>\n")
+        if (val[i].startsWith('<li')) {
+            $(obj).append(val[i] + "\n")
+        } else {
+            $(obj).append("<li>" + val[i] + "</li>\n")
+        };
     };
     $(obj).listview('refresh');
 
@@ -685,4 +602,7 @@ function shDialog(header, content){
     $('#shDialogContent').html(content);
     //$('#shDialog').trigger('create');
     $.mobile.changePage('#shDialog', {transition: 'pop', role: 'dialog'} );
+};
+function shUrl(url){
+    document.location.href=url;
 };
