@@ -98,5 +98,5 @@ input.ui-slider-input { display:none !important; }
 }
 /* Landscape phones and down */
 @media (max-width: 480px) {
-
+    .hidden_phone { display: none; }
 }
