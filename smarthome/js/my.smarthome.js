@@ -192,7 +192,7 @@ function shPageShow() {
             $.idleTimer(100);
 
             $(document).bind("active.idleTimer", function() {
-                document.location.href='index.html';
+                window.history.back();
             });
         } else {
             $.idleTimer(120000);
@@ -302,8 +302,8 @@ function shUpdateItem(path, val, src) {
 };
 
 console.log('Init SmartHome.py v' + shVersion)
-//shInit("ws://u12sh.fritz.box:2121/");
-//shCustomInit();
+shInit("ws://u12sh.fritz.box:2121/");
+shCustomInit();
 
 // adapt default settings
 //$.mobile.page.prototype.options.addBackBtn= true;
