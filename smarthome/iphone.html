@@ -10,12 +10,10 @@
     <link href="css/modern.css" rel="stylesheet"></link>
     <link href="css/modern-responsive.css" rel="stylesheet"></link>
     <link href="css/jquery.mobile-1.2.0.css" rel="stylesheet"></link>
-    <link href="css/clock.css" rel="stylesheet"></link>
     <link href="css/my.css" rel="stylesheet"></link>
 
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/jquery.mobile-1.2.0.js"></script>
-    <script src="js/jquery.idle-timer.js"></script>
     <script src="js/jquery.flot.min.js"></script>
     <script src="js/jquery.flot.time.min.js"></script>
     <script src="js/smarthome.js"></script>
@@ -72,29 +70,13 @@
             <div class="page-region-content">
                 <div class="clearfix">
 
-                    <div class="tile double double-vertical icon" onclick="javascript:document.location.href='clock.html'">
-                        <div class="tile-content">
-                            <div id="clock">
-                                <span id="e0">●</span>
-                                <span id="e1">●</span>
-                                <span id="e2">‌●</span>
-                                <span id="e3">‌●</span>
-                              	<div id="letters"></div>
-                            </div>​
-                        </div>
-                    </div>
-                    
-                    <div class="tile double double-vertical image" onclick="javascript:document.location.href='door_camera.html'">
-                        <div class="tile-content">
-                            <img src="http://t24.fritz.box/cgi-bin/faststream.jpg?preview&size=310x310" alt="" />
-                        </div>
-                        <div class="brand">
-                            <span class="name">Haust&uuml;re</span>
-                            <div class="badge bg-color-orange">4</div>
-                        </div>
-                    </div>
-
                     <div class="tile container">
+                        <div class="tile half half-vertical icon">
+                            <div class="tile-content">
+                                <img src="img/control_building_eg.png" alt=""/>
+                            </div>
+                        </div>
+
                         <div class="tile half half-vertical bg-color-yellow icon" onclick="javascript:document.location.href='eg_lichter.html'">
                             <div class="tile-content">
                                 <img src="img/licht_licht.png" alt=""/>
@@ -112,15 +94,15 @@
                                 <img src="img/sani_heizung.png" alt=""/>
                             </div>
                         </div>
-                        
-                        <div class="tile half half-vertical bg-color-transparent">
-                            <div class="tile-content">
-                                <h2>EG</h2>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="tile container">
+                        <div class="tile half half-vertical icon">
+                            <div class="tile-content">
+                                <img src="img/control_building_dg.png" alt=""/>
+                            </div>
+                        </div>
+
                         <div class="tile half half-vertical bg-color-yellow icon" onclick="javascript:document.location.href='dg_lichter.html'">
                             <div class="tile-content">
                                 <img src="img/licht_licht.png" alt=""/>
@@ -136,28 +118,6 @@
                         <div class="tile half half-vertical bg-color-red icon" onclick="javascript:document.location.href='dg_heizung.html'">
                             <div class="tile-content">
                                 <img src="img/sani_heizung.png" alt=""/>
-                            </div>
-                        </div>
-
-                        <div class="tile half half-vertical bg-color-transparent">
-                            <div class="tile-content">
-                                <h2>DG</h2>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tile bg-color-green jalousie">
-                        <div class="tile-content">
-                            <h2>Jalousie</h2>
-                            <h5>Essen mitte</h5>
-                            <input data-sh="eg.essen.jalousie.mitte.position" type="range" min="0" max="100" step="5" data-highlight="true" />
-                            <input data-sh="eg.essen.jalousie.mitte.lamelle" type="range" min="0" max="100" step="5" data-highlight="true" />
-                        </div>
-                        <div class="brand">
-                            <img class="item_icon" src="img/fts_rollo.png" />
-                            <div class="name item_value">
-                                <span data-sh="eg.essen.jalousie.mitte.position" class="percent"></span> / 
-                                <span data-sh="eg.essen.jalousie.mitte.lamelle" class="percent"></span>
                             </div>
                         </div>
                     </div>
@@ -198,6 +158,16 @@
                         </div>
                         <div class="brand">
                             <div class="name">Außentemperatur</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tile double double-vertical image" onclick="javascript:document.location.href='door_camera.html'">
+                        <div class="tile-content">
+                            <img src="http://t24.fritz.box/cgi-bin/faststream.jpg?preview&size=310x310" alt="" />
+                        </div>
+                        <div class="brand">
+                            <span class="name">Haust&uuml;re</span>
+                            <div class="badge bg-color-orange">4</div>
                         </div>
                     </div>
 
@@ -246,8 +216,6 @@ data-options="
             </div>
         </div>
     </div>
-
-    <script src="js/clock.js"></script>
 </body>
 </html>
 
