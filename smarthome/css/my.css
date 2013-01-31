@@ -110,7 +110,7 @@ input.ui-slider-input { display:none !important; }
 @media (max-width: 480px) {
     .hidden_phone { display: none; }
 
-  .tile.icon  > .tile-content img {
+  .tile.half.icon  > .tile-content img {
     width: 24px;
     height: 24px;
     margin-left: -12px;
