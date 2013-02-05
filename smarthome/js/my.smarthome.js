@@ -192,7 +192,7 @@ function shPageShow() {
             $.idleTimer(100);
 
             $(document).bind("active.idleTimer", function() {
-                window.history.back();
+                document.location.href='ipad.html';
             });
         } else {
             $.idleTimer(120000);
